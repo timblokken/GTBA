@@ -23,11 +23,12 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="CenterAndExpand">
                         <Label Text="{Binding .}"
                                Style="{DynamicResource ListItemTextStyle}" />
                         <Label Text="{Binding .}"
-                               d:Text="Detail"
                                Style="{DynamicResource ListItemDetailTextStyle}" />
                     </StackLayout>
                 </ViewCell>
