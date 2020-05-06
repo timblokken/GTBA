@@ -15,11 +15,11 @@ namespace GTBA.ViewModels
 
             Items = new ObservableCollection<string>
             {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Itemssss 5"
+                "franchise 1",
+                "franchise 2",
+                "franchise 3",
+                "franchise 4",
+                "franchise 5"
             };
         }
 
