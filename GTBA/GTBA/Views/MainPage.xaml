@@ -29,7 +29,7 @@
 
         <NavigationPage Title="Games">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:GamesListPage />
             </x:Arguments>
         </NavigationPage>
 
