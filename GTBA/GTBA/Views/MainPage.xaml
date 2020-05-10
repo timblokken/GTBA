@@ -23,7 +23,7 @@
 
         <NavigationPage Title="Series">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:SeriesListPage />
             </x:Arguments>
         </NavigationPage>
 
