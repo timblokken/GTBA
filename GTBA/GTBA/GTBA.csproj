@@ -17,17 +17,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\FranchiseListPage.xaml">
+    <EmbeddedResource Update="Views\Franchises\FranchiseListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\GamesListPage.xaml">
+    <EmbeddedResource Update="Views\Games\GamesListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MoviesListPage.xaml">
+    <EmbeddedResource Update="Views\Movies\MoviesListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SeriesListPage.xaml">
+    <EmbeddedResource Update="Views\Series\SeriesListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Episodes\" />
+    <Folder Include="Views\Episodes\" />
   </ItemGroup>
 </Project>
