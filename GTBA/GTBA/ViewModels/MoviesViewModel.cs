@@ -5,23 +5,19 @@ using System.Text;
 
 namespace GTBA.ViewModels
 {
-    public class FranchisesViewModel : BaseViewModel
+    public class MoviesViewModel : BaseViewModel
     {
         public ObservableCollection<string> Items { get; set; }
-
-        public FranchisesViewModel()
+        public MoviesViewModel()
         {
-            Title = "GTBA";
-
             Items = new ObservableCollection<string>
             {
-                "franchise 1",
-                "franchise 2",
-                "franchise 3",
-                "franchise 4",
-                "franchise 5"
+                "movie 1",
+                "movie 2",
+                "movie 3",
+                "movie 4",
+                "movie 5"
             };
         }
-
     }
 }

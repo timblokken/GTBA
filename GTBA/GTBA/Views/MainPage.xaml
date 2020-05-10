@@ -14,24 +14,25 @@
                 <views:FranchiseListPage />
             </x:Arguments>
         </NavigationPage>
-        
-        <NavigationPage Title="series">
+
+        <NavigationPage Title="Movies">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:MoviesListPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="games">
+        <NavigationPage Title="Series">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:SeriesListPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="About">
+        <NavigationPage Title="Games">
             <x:Arguments>
-                <views:AboutPage />
+                <views:GamesListPage />
             </x:Arguments>
         </NavigationPage>
+
     </TabbedPage.Children>
     
 </TabbedPage>
