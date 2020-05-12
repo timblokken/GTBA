@@ -30,7 +30,7 @@ namespace GTBA.Services
             }
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             Item item = await GetItemAsync(id);
             context.Items.Remove(item);
@@ -38,7 +38,7 @@ namespace GTBA.Services
             return await SaveChangesAsync();
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<Item> GetItemAsync(int id)
         {
             //korte versie
             return await context.Items.SingleAsync(item => item.Id == id);
