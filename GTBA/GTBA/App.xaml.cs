@@ -13,7 +13,7 @@ namespace GTBA
         {
             InitializeComponent();
 
-            DependencyService.Register<SQLiteDataStore>();
+            DependencyService.Register<FranchisesDataStore>();
             MainPage = new MainPage();
         }
 

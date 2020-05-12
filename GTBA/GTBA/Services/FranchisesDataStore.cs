@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace GTBA.Services
 {
-    public class SQLiteDataStore : IDataStore<Item>
+    public class FranchisesDataStore : IDataStore<Franchise>
     {
-        private ItemContext context = new ItemContext();
+        private GTBAContext context = new GTBAContext();
 
-        public SQLiteDataStore()
+        public FranchisesDataStore()
         {
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<bool> AddItemAsync(Franchise franchise)
         {
             try
             {
                 //item.Id = 1;
-                await context.Items.AddAsync(item);
+                await context.Franchises.AddAsync(franchise);
 
                 return await SaveChangesAsync();
             }
@@ -32,16 +32,16 @@ namespace GTBA.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            Item item = await GetItemAsync(id);
-            context.Items.Remove(item);
+            Franchise franchise = await GetItemAsync(id);
+            context.Franchises.Remove(franchise);
 
             return await SaveChangesAsync();
         }
 
-        public async Task<Item> GetItemAsync(int id)
+        public async Task<Franchise> GetItemAsync(int id)
         {
             //korte versie
-            return await context.Items.SingleAsync(item => item.Id == id);
+            return await context.Franchises.SingleAsync(item => item.FranchiseId == id);
 
             //lange versie
             /*var todoItem = from item in context.Items
@@ -51,12 +51,12 @@ namespace GTBA.Services
             return await todoItem.SingleAsync(); */
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Franchise>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await context.Items.ToListAsync();
+            return await context.Franchises.ToListAsync();
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<bool> UpdateItemAsync(Franchise franchise)
         {
             return await SaveChangesAsync();
         }

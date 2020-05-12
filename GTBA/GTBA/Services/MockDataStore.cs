@@ -14,12 +14,12 @@ namespace GTBA.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "First item", Description="This is an item description." },
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "Second item", Description="This is an item description." },
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "Third item", Description="This is an item description." },
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "Fourth item", Description="This is an item description." },
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "Fifth item", Description="This is an item description." },
+                new Item { Id = Convert.ToInt32( Guid.NewGuid()), Text = "Sixth item", Description="This is an item description." }
             };
         }
 
@@ -39,7 +39,7 @@ namespace GTBA.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
             items.Remove(oldItem);
@@ -47,7 +47,7 @@ namespace GTBA.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<Item> GetItemAsync(int id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
