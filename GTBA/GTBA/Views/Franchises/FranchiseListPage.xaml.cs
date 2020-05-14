@@ -1,4 +1,6 @@
-﻿using GTBA.ViewModels;
+﻿using GTBA.Models;
+using GTBA.ViewModels;
+using GTBA.ViewModels.Franchises;
 using GTBA.Views.Franchises;
 using System;
 using System.Collections.ObjectModel;
@@ -30,7 +32,8 @@ namespace GTBA.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var franchise = (Franchise)e.Item;
+            await Navigation.PushModalAsync(new NavigationPage(new FranchiseDetailPage(new FranchiseDetailViewModel(franchise))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -40,5 +43,11 @@ namespace GTBA.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewFranchisePage()));
         }
+
+        //async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    var franchise = (Franchise)e.SelectedItem;
+        //    await Navigation.PushAsync(new FranchiseDetailPage(new FranchiseDetailViewModel(franchise)));
+        //}
     }
 }

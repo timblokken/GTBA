@@ -13,25 +13,25 @@ namespace GTBA.ViewModels
     {
 
         public IDataStore<Franchise> DataStore1 => DependencyService.Get<IDataStore<Franchise>>();
-        public ObservableCollection<string> Franchises { get; set; }
+        public ObservableCollection<Franchise> Franchises { get; set; }
 
         public FranchisesViewModel()
         {
             Title = "GTBA";
 
-            Franchises = new ObservableCollection<string>
+            Franchises = new ObservableCollection<Franchise>
             {
-                "franchise 1",
-                "franchise 2",
-                "franchise 3",
-                "franchise 4",
-                "franchise 5"
+                new Franchise { FranchiseId = 1, FranchiseName = "franchise 1"},
+                new Franchise { FranchiseId = 2, FranchiseName = "franchise 2"},
+                new Franchise { FranchiseId = 3, FranchiseName = "franchise 3"},
+                new Franchise { FranchiseId = 4, FranchiseName = "franchise 4"},
+                new Franchise { FranchiseId = 5, FranchiseName = "franchise 5"},
             };
 
             MessagingCenter.Subscribe<NewFranchisePage, Franchise>(this, "AddFranchise", async (obj, franchise) =>
             {
                 var newItem = franchise as Franchise;
-                Franchises.Add(newItem.FranchiseName);
+                Franchises.Add(newItem);
                 await DataStore1.AddItemAsync(newItem);
             });
         }
