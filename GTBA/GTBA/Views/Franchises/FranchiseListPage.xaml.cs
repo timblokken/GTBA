@@ -1,4 +1,5 @@
 ﻿using GTBA.ViewModels;
+using GTBA.Views.Franchises;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -33,6 +34,11 @@ namespace GTBA.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async void AddFranchiseBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewFranchisePage()));
         }
     }
 }
