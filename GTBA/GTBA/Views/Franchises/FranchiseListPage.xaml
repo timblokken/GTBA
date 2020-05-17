@@ -11,10 +11,12 @@
         <Button Text="Add new franchise"
                 x:Name="AddFranchiseBtn"
                 Clicked="AddFranchiseBtn_Clicked"/>
-        <ListView x:Name="MyListView"
+        <ListView x:Name="FranchisesListView"
                   ItemsSource="{Binding Franchises}"
                   ItemTapped="Handle_ItemTapped"
-                  
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                   CachingStrategy="RecycleElement">
 
             <!--Custom View Cells-->
