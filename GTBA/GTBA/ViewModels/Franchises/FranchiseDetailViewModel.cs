@@ -22,6 +22,7 @@ namespace GTBA.ViewModels.Franchises
             {
                 var updatedItem = update as Franchise;
                 this.Franchise = updatedItem;
+                this.Title = updatedItem.FranchiseName;
                 await DataStore1.UpdateItemAsync(updatedItem);
             });
         }
