@@ -7,32 +7,32 @@
              x:Class="GTBA.Views.FranchiseListPage"
              Title="{Binding Title}">
 
-    <ListView x:Name="MyListView"
-              ItemsSource="{Binding Items}"
-              ItemTapped="Handle_ItemTapped"
-              CachingStrategy="RecycleElement">
+    <StackLayout>
+        <Button Text="Add new franchise"
+                x:Name="AddFranchiseBtn"
+                Clicked="AddFranchiseBtn_Clicked"/>
+        <ListView x:Name="MyListView"
+                  ItemsSource="{Binding Franchises}"
+                  ItemTapped="Handle_ItemTapped"
+                  
+                  CachingStrategy="RecycleElement">
 
-        <!--Built in Cells-->
-        <!--<ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding .}" d:Text="{Binding .}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>-->
-
-        <!--Custom View Cells-->
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemTextStyle}" />
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemDetailTextStyle}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding FranchiseName}"
+                                   Style="{DynamicResource ListItemTextStyle}" />
+                            <!--<Label Text="{Binding .}"
+                                   Style="{DynamicResource ListItemDetailTextStyle}" />-->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
 </ContentPage>
