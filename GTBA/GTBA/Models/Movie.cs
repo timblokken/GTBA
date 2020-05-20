@@ -4,13 +4,35 @@ using System.Text;
 
 namespace GTBA.Models
 {
-    public class Movie
+    public class Movie : BaseModel
     {
-        public int MovieId { get; set; }
-        public string MovieName { get; set; }
-        public TimeSpan MovieLenth { get; set; }
+        int movieId = -1;
+        public int MovieId
+        {
+            get { return movieId; }
+            set { SetProperty(ref movieId, value); }
+        }
 
-        public int FranchiseId { get; set; }
+        string movieName = string.Empty;
+        public string MovieName
+        {
+            get { return movieName; }
+            set { SetProperty(ref movieName, value); }
+        }
+
+        TimeSpan movieLength = TimeSpan.Zero;
+        public TimeSpan MovieLength
+        {
+            get { return movieLength; }
+            set { SetProperty(ref movieLength, value); }
+        }
+
+        int franchiseId = -1;
+        public int FranchiseId
+        {
+            get { return franchiseId; }
+            set { SetProperty(ref franchiseId, value); }
+        }
         public Franchise Franchise { get; set; }
     }
 }
