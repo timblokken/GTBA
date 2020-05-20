@@ -8,7 +8,7 @@ namespace GTBA.Models
     {
         //public int FranchiseId { get; set; }
 
-        int franchiseId = -1;
+        int franchiseId;
         public int FranchiseId
         {
             get { return franchiseId; }

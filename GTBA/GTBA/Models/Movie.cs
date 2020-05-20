@@ -6,7 +6,7 @@ namespace GTBA.Models
 {
     public class Movie : BaseModel
     {
-        int movieId = -1;
+        int movieId;
         public int MovieId
         {
             get { return movieId; }
@@ -27,7 +27,7 @@ namespace GTBA.Models
             set { SetProperty(ref movieLength, value); }
         }
 
-        int franchiseId = -1;
+        int franchiseId;
         public int FranchiseId
         {
             get { return franchiseId; }

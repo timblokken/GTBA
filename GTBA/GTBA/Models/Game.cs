@@ -6,7 +6,7 @@ namespace GTBA.Models
 {
     public class Game : BaseModel
     {
-        int gameId = -1;
+        int gameId;
         public int GameId
         {
             get { return gameId; }
@@ -20,7 +20,7 @@ namespace GTBA.Models
             set { SetProperty(ref gameName, value); }
         }
 
-        int franchiseId = -1;
+        int franchiseId;
         public int FranchiseId
         {
             get { return franchiseId; }
