@@ -44,10 +44,12 @@ namespace GTBA.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewFranchisePage()));
         }
 
-        //async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    var franchise = (Franchise)e.SelectedItem;
-        //    await Navigation.PushAsync(new FranchiseDetailPage(new FranchiseDetailViewModel(franchise)));
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Franchises.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
+        }
     }
 }

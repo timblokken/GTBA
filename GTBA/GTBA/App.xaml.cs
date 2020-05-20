@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GTBA.Services;
 using GTBA.Views;
+using GTBA.Services.DataStores;
 
 namespace GTBA
 {

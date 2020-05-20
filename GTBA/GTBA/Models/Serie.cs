@@ -4,12 +4,28 @@ using System.Text;
 
 namespace GTBA.Models
 {
-    public class Serie
+    public class Serie : BaseModel
     {
-        public int SerieId { get; set; }
-        public string SerieName { get; set; }
+        int serieId = -1;
+        public int SerieId
+        {
+            get { return serieId; }
+            set { SetProperty(ref serieId, value); }
+        }
 
-        public int FranchiseId { get; set; }
+        string serieName = string.Empty;
+        public string SerieName
+        {
+            get { return serieName; }
+            set { SetProperty(ref serieName, value); }
+        }
+
+        int franchiseId = -1;
+        public int FranchiseId
+        {
+            get { return franchiseId; }
+            set { SetProperty(ref franchiseId, value); }
+        }
         public Franchise Franchise { get; set; }
     }
 }
