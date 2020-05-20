@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using GTBA.Models;
 using GTBA.Services;
+using GTBA.Services.Interfaces;
 
 namespace GTBA.ViewModels
 {

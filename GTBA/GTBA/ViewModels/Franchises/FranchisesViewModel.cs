@@ -1,5 +1,6 @@
 ﻿using GTBA.Models;
 using GTBA.Services;
+using GTBA.Services.Interfaces;
 using GTBA.Views.Franchises;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GTBA.Services
+namespace GTBA.Services.Interfaces
 {
     public interface IDataStore<T>
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GTBA.Services
+namespace GTBA.Services.DataStores
 {
     public abstract class BaseDataStore<T> where T : class, new()
     {
