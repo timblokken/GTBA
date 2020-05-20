@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GTBA.Views.Movies.NewMoviePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel"
+                     Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Save"
+                     Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="20"
+                     Padding="15">
+            <Label Text="Name"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Movie.MovieName}"
+                   Placeholder="Name of Movie"
+                   FontSize="Small" />
+            <Label Text="length"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Length}"
+                   x:Name="movieLength"
+                   Placeholder="00:00:00"
+                   FontSize="Small" />
+            <Label Text="Franchise"
+                   FontSize="Medium" />
+            <Picker x:Name="FranchisePicker"
+                    Title="Select a Franchise"
+                    ItemsSource="{Binding Franchises}"
+                    ItemDisplayBinding="{Binding FranchiseName}"
+                    SelectedItem="{Binding SelectedFranchise}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

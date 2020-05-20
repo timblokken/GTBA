@@ -1,23 +1,60 @@
-﻿using System;
+﻿using GTBA.Models;
+using GTBA.Services.Interfaces;
+using GTBA.ViewModels.Movies;
+using GTBA.Views.Movies;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GTBA.ViewModels
 {
     public class MoviesViewModel : BaseViewModel
     {
-        public ObservableCollection<string> Items { get; set; }
+        public IDataStore<Movie> DataStore1 => DependencyService.Get<IDataStore<Movie>>();
+        public ObservableCollection<Movie> Movies { get; set; }
+        public Command LoadItemsCommand { get; set; }
         public MoviesViewModel()
         {
-            Items = new ObservableCollection<string>
+            Title = "GTBA";
+            Movies = new ObservableCollection<Movie>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+
+            MessagingCenter.Subscribe<NewMovieViewModel, Movie>(this, "AddMovie", async (obj, movie) =>
             {
-                "movie 1",
-                "movie 2",
-                "movie 3",
-                "movie 4",
-                "movie 5"
-            };
+                var newItem = movie as Movie;
+                Movies.Add(newItem);
+                await DataStore1.AddItemAsync(newItem);
+            });
+        }
+
+        async Task ExecuteLoadItemsCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Movies.Clear();
+                var movies = await DataStore1.GetItemsAsync(true);
+                foreach (var movie in movies)
+                {
+                    Movies.Add(movie);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
 }

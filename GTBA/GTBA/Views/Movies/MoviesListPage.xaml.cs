@@ -1,4 +1,5 @@
 ﻿using GTBA.ViewModels;
+using GTBA.Views.Movies;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -31,6 +32,19 @@ namespace GTBA.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private async void AddMovieBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewMoviePage()));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Movies.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
