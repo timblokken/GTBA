@@ -27,5 +27,7 @@ namespace GTBA.Models
             set { SetProperty(ref franchiseId, value); }
         }
         public Franchise Franchise { get; set; }
+
+        public ICollection<Episode> Episodes { get; set; }
     }
 }

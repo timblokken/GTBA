@@ -23,5 +23,7 @@ namespace GTBA.Models
         }
 
         public ICollection<Movie> Movies { get; set; }
+        public ICollection<Serie> Series { get; set; }
+        public ICollection<Game> Games { get; set; }
     }
 }
