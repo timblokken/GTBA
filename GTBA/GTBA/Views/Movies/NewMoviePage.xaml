@@ -22,9 +22,9 @@
                    FontSize="Small" />
             <Label Text="length"
                    FontSize="Medium" />
-            <Entry Text="{Binding Length}"
+            <Entry Text="{Binding Movie.MovieLength}"
                    x:Name="movieLength"
-                   Placeholder="00:00:00"
+                   Placeholder="Length of movie in minutes"
                    FontSize="Small" />
             <Label Text="Franchise"
                    FontSize="Medium" />

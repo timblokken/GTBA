@@ -25,7 +25,7 @@
                    FontSize="Small" />
             <Label Text="Length:"
                    FontSize="Medium" />
-            <Label Text="{Binding Movie.MovieLength}"
+            <Label Text="{Binding Movie.MovieLength, StringFormat='{0} Minutes'}"
                    FontSize="Small" />
             <Label Text="Franchise:"
                    FontSize="Medium" />

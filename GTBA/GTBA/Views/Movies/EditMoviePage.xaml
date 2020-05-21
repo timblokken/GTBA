@@ -23,7 +23,7 @@
                    FontSize="Small" />
             <Label Text="Length:"
                    FontSize="Medium" />
-            <Entry Text="{Binding Length}"
+            <Entry Text="{Binding Movie.MovieLength}"
                    FontSize="Small" />
             <Label Text="Franchise:"
                    FontSize="Medium" />
