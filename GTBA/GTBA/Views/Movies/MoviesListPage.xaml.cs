@@ -1,4 +1,6 @@
-﻿using GTBA.ViewModels;
+﻿using GTBA.Models;
+using GTBA.ViewModels;
+using GTBA.ViewModels.Movies;
 using GTBA.Views.Movies;
 using System;
 using System.Collections.ObjectModel;
@@ -28,7 +30,8 @@ namespace GTBA.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var movie = (Movie)e.Item;
+            await Navigation.PushModalAsync(new NavigationPage(new MovieDetailPage(new MovieDetailViewModel(movie))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

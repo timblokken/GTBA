@@ -1,4 +1,4 @@
-﻿using GTBA.ViewModels.Franchises;
+﻿using GTBA.ViewModels.Movies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GTBA.Views.Franchises
+namespace GTBA.Views.Movies
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditFranchisePage : ContentPage
+    public partial class EditMoviePage : ContentPage
     {
-        FranchiseDetailViewModel viewModel;
-        public EditFranchisePage(FranchiseDetailViewModel viewModel)
+        MovieDetailViewModel viewModel;
+        public EditMoviePage(MovieDetailViewModel viewModel)
         {
             InitializeComponent();
 
@@ -22,7 +22,7 @@ namespace GTBA.Views.Franchises
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Franchise);
+            MessagingCenter.Send(this, "EditFranchise", viewModel.Movie);
             await Navigation.PopModalAsync();
         }
 
