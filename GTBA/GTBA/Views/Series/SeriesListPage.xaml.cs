@@ -32,5 +32,18 @@ namespace GTBA.Views
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
+
+        private void AddSerieBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Series.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
+        }
     }
 }

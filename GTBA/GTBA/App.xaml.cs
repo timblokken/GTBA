@@ -16,6 +16,8 @@ namespace GTBA
 
             DependencyService.Register<FranchisesDataStore>();
             DependencyService.Register<MovieDataStore>();
+            DependencyService.Register<SeriesDataStore>();
+
             MainPage = new MainPage();
         }
 
