@@ -12,7 +12,6 @@ namespace GTBA.ViewModels.Movies
     {
         public IDataStore<Franchise> DataStore1 => DependencyService.Get<IDataStore<Franchise>>();
         public Movie Movie { get; set; }
-        public string Length { get; set; }
         public ObservableCollection<Franchise> Franchises { get; set; }
         private Franchise selectedFranchise;
 
@@ -33,7 +32,6 @@ namespace GTBA.ViewModels.Movies
 
         public void Save()
         {
-            Movie.MovieLength = TimeSpan.Parse(Length);
             Movie.FranchiseId = selectedFranchise.FranchiseId;
             MessagingCenter.Send(this, "AddMovie", Movie);
         }
