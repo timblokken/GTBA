@@ -6,14 +6,14 @@ namespace GTBA.Models
 {
     public class Episode : BaseModel
     {
-        int episodeId = -1;
+        int episodeId;
         public int EpisodeId
         {
             get { return episodeId; }
             set { SetProperty(ref episodeId, value); }
         }
 
-        int episodeNr = -1;
+        int episodeNr;
         public int EpisodeNr
         {
             get { return episodeNr; }
@@ -34,7 +34,7 @@ namespace GTBA.Models
             set { SetProperty(ref episodeLength, value); }
         }
 
-        int serieId = -1;
+        int serieId;
         public int SerieId
         {
             get { return serieId; }

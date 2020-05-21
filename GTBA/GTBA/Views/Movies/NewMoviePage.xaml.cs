@@ -1,28 +1,34 @@
-﻿using GTBA.ViewModels.Franchises;
+﻿using GTBA.Models;
+using GTBA.Services.Interfaces;
+using GTBA.ViewModels.Movies;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GTBA.Views.Franchises
+namespace GTBA.Views.Movies
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditFranchisePage : ContentPage
+    public partial class NewMoviePage : ContentPage
     {
-        FranchiseDetailViewModel viewModel;
-        public EditFranchisePage(FranchiseDetailViewModel viewModel)
+
+        NewMovieViewModel viewModel;
+        
+        public NewMoviePage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = viewModel = new NewMovieViewModel();
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Franchise);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 

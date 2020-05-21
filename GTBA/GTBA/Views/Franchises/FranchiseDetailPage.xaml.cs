@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,7 +28,6 @@ namespace GTBA.Views.Franchises
             var franchise = new Franchise
             {
                 FranchiseName = "Item 1",
-                
             };
 
             viewModel = new FranchiseDetailViewModel(franchise);

@@ -6,37 +6,33 @@
              mc:Ignorable="d"
              x:Class="GTBA.Views.MoviesListPage"
              Title="{Binding Title}">
-    
-    <ListView x:Name="MyListView"
-              ItemsSource="{Binding Items}"
-              ItemTapped="Handle_ItemTapped"
-              CachingStrategy="RecycleElement">
+    <StackLayout>
+        <Button Text="Add new movie"
+                x:Name="AddMovieBtn"
+                Clicked="AddMovieBtn_Clicked" />
+        <ListView x:Name="MoviesListView"
+                  ItemsSource="{Binding Movies}"
+                  ItemTapped="Handle_ItemTapped"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  CachingStrategy="RecycleElement">
 
-        <!--Built in Cells-->
-        <!--<ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding .}"
-                          d:Text="{Binding .}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>-->
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding MovieName}"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
-        <!--Custom View Cells-->
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal"
-                                 VerticalOptions="Center"
-                                 >
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemTextStyle}"
-                               HorizontalOptions="CenterAndExpand" />
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemDetailTextStyle}"
-                               HorizontalOptions="CenterAndExpand" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-
-    </ListView>
+        </ListView>
+    </StackLayout>
 </ContentPage>
