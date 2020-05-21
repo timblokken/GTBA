@@ -15,7 +15,7 @@ namespace GTBA.ViewModels
     public class FranchisesViewModel : BaseViewModel
     {
 
-        public IDataStore<Franchise> DataStore1 => DependencyService.Get<IDataStore<Franchise>>();
+        public IDataStore<Franchise> DataStore => DependencyService.Get<IDataStore<Franchise>>();
         public ObservableCollection<Franchise> Franchises { get; set; }
         public Command LoadItemsCommand { get; set; }
 
@@ -29,7 +29,7 @@ namespace GTBA.ViewModels
             {
                 var newItem = franchise as Franchise;
                 Franchises.Add(newItem);
-                await DataStore1.AddItemAsync(newItem);
+                await DataStore.AddItemAsync(newItem);
             });
         }
 
@@ -43,7 +43,7 @@ namespace GTBA.ViewModels
             try
             {
                 Franchises.Clear();
-                var franchises = await DataStore1.GetItemsAsync(true);
+                var franchises = await DataStore.GetItemsAsync(true);
                 foreach (var franchise in franchises)
                 {
                     Franchises.Add(franchise);

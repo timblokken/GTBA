@@ -10,7 +10,7 @@ namespace GTBA.ViewModels.Movies
 {
     public class NewMovieViewModel : BaseViewModel
     {
-        public IDataStore<Franchise> DataStore1 => DependencyService.Get<IDataStore<Franchise>>();
+        public IDataStore<Franchise> DataStore => DependencyService.Get<IDataStore<Franchise>>();
         public Movie Movie { get; set; }
         public ObservableCollection<Franchise> Franchises { get; set; }
         private Franchise selectedFranchise;
@@ -38,7 +38,7 @@ namespace GTBA.ViewModels.Movies
         async void GetFranchises()
         {
             Franchises.Clear();
-            var franchises = await DataStore1.GetItemsAsync(true);
+            var franchises = await DataStore.GetItemsAsync(true);
             foreach (Franchise franchise in franchises)
             {
                 Franchises.Add(franchise);

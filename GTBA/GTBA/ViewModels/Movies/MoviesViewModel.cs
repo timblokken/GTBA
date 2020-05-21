@@ -14,7 +14,7 @@ namespace GTBA.ViewModels
 {
     public class MoviesViewModel : BaseViewModel
     {
-        public IDataStore<Movie> DataStore1 => DependencyService.Get<IDataStore<Movie>>();
+        public IDataStore<Movie> DataStore => DependencyService.Get<IDataStore<Movie>>();
         public ObservableCollection<Movie> Movies { get; set; }
         public Command LoadItemsCommand { get; set; }
         public MoviesViewModel()
@@ -27,7 +27,7 @@ namespace GTBA.ViewModels
             {
                 var newItem = movie as Movie;
                 Movies.Add(newItem);
-                await DataStore1.AddItemAsync(newItem);
+                await DataStore.AddItemAsync(newItem);
             });
         }
 
@@ -41,7 +41,7 @@ namespace GTBA.ViewModels
             try
             {
                 Movies.Clear();
-                var movies = await DataStore1.GetItemsAsync(true);
+                var movies = await DataStore.GetItemsAsync(true);
                 foreach (var movie in movies)
                 {
                     Movies.Add(movie);
