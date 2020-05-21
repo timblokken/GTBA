@@ -20,8 +20,8 @@ namespace GTBA.Models
             set { SetProperty(ref movieName, value); }
         }
 
-        TimeSpan movieLength = TimeSpan.Zero;
-        public TimeSpan MovieLength
+        int movieLength;
+        public int MovieLength
         {
             get { return movieLength; }
             set { SetProperty(ref movieLength, value); }
