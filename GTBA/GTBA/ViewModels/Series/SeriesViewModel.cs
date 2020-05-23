@@ -1,5 +1,6 @@
 ﻿using GTBA.Models;
 using GTBA.Services.Interfaces;
+using GTBA.ViewModels.Series;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +22,12 @@ namespace GTBA.ViewModels
             Series = new ObservableCollection<Serie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            //MessagingCenter.Subscribe<NewSerieViewModel, Serie>(this, "AddMovie", async (obj, serie) =>
-            //{
-            //    var newItem = serie as Serie;
-            //    Series.Add(newItem);
-            //    await DataStore.AddItemAsync(newItem);
-            //});
+            MessagingCenter.Subscribe<NewSerieViewModel, Serie>(this, "AddSerie", async (obj, serie) =>
+            {
+                var newItem = serie as Serie;
+                Series.Add(newItem);
+                await DataStore.AddItemAsync(newItem);
+            });
         }
 
         async Task ExecuteLoadItemsCommand()

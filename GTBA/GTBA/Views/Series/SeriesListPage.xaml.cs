@@ -1,4 +1,5 @@
 ﻿using GTBA.ViewModels;
+using GTBA.Views.Series;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -33,9 +34,9 @@ namespace GTBA.Views
             ((ListView)sender).SelectedItem = null;
         }
 
-        private void AddSerieBtn_Clicked(object sender, EventArgs e)
+        async void AddSerieBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new NavigationPage(new NewSeriePage()));
         }
 
         protected override void OnAppearing()
