@@ -1,4 +1,6 @@
-﻿using GTBA.ViewModels;
+﻿using GTBA.Models;
+using GTBA.ViewModels;
+using GTBA.ViewModels.Series;
 using GTBA.Views.Series;
 using System;
 using System.Collections.ObjectModel;
@@ -28,7 +30,8 @@ namespace GTBA.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var serie = (Serie)e.Item;
+            await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
