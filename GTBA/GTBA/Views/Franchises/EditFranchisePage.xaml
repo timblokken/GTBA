@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="GTBA.Views.Franchises.EditFranchisePage"
              Title="{Binding Title}">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
                      Clicked="Cancel_Clicked" />

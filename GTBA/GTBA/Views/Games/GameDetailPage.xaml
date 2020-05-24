@@ -4,30 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GTBA.Views.Series.NewSeriePage">
-    
+             x:Class="GTBA.Views.Games.GameDetailPage"
+             Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel"
-                     Clicked="Cancel_Clicked" />
-        <ToolbarItem Text="Save"
-                     Clicked="Save_Clicked" />
+        <ToolbarItem Text="Back"
+                     x:Name="BackBtn"
+                     Clicked="BackBtn_Clicked" />
+        <ToolbarItem Text="Edit"
+                     x:Name="EditBtn"
+                     Clicked="EditBtn_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Spacing="20"
                      Padding="15">
-            <Label Text="Name"
+            <Label Text="Name:"
                    FontSize="Medium" />
-            <Entry Text="{Binding Serie.SerieName}"
-                   Placeholder="Name of serie"
+            <Label Text="{Binding Game.GameName}"
                    FontSize="Small" />
-            <Label Text="Franchise"
+            <Label Text="Franchise:"
                    FontSize="Medium" />
-            <Picker x:Name="FranchisePicker"
-                    Title="Select a Franchise"
-                    ItemsSource="{Binding Franchises}"
-                    ItemDisplayBinding="{Binding FranchiseName}"
-                    SelectedItem="{Binding SelectedFranchise}" />
+            <Label Text="{Binding Game.Franchise}"
+                   FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

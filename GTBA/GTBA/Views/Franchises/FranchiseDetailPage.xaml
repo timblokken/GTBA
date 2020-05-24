@@ -23,11 +23,6 @@
                    FontSize="Medium" />
             <Label Text="{Binding Franchise.FranchiseName}"
                    FontSize="Small" />
-            <!--<Label Text="Description:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Item.Description}"
-                   d:Text="Item description"
-                   FontSize="Small" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

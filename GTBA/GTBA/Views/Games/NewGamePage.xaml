@@ -4,8 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GTBA.Views.Series.NewSeriePage">
-    
+             x:Class="GTBA.Views.Games.NewGamePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
                      Clicked="Cancel_Clicked" />
@@ -18,8 +17,8 @@
                      Padding="15">
             <Label Text="Name"
                    FontSize="Medium" />
-            <Entry Text="{Binding Serie.SerieName}"
-                   Placeholder="Name of serie"
+            <Entry Text="{Binding Game.GameName}"
+                   Placeholder="Name of game"
                    FontSize="Small" />
             <Label Text="Franchise"
                    FontSize="Medium" />

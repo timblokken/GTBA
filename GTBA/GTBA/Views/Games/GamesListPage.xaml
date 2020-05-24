@@ -6,32 +6,34 @@
              mc:Ignorable="d"
              x:Class="GTBA.Views.GamesListPage"
              Title="{Binding Title}">
-    <ListView x:Name="MyListView"
-              ItemsSource="{Binding Items}"
-              ItemTapped="Handle_ItemTapped"
-              CachingStrategy="RecycleElement">
+    
+    <StackLayout>
+        <Button Text="Add new game"
+                x:Name="AddGameBtn"
+                Clicked="AddGameBtn_Clicked" />
+        <ListView x:Name="GamesListView"
+                  ItemsSource="{Binding Games}"
+                  ItemTapped="Handle_ItemTapped"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  CachingStrategy="RecycleElement">
 
-        <!--Built in Cells-->
-        <!--<ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" d:Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>-->
+            <!--Custom View Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding GameName}"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
-        <!--Custom View Cells-->
-
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemTextStyle}" />
-                        <Label Text="{Binding .}"
-                               Style="{DynamicResource ListItemDetailTextStyle}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-
-    </ListView>
+        </ListView>
+    </StackLayout>
 </ContentPage>

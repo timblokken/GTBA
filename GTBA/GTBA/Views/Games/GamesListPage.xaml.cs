@@ -1,4 +1,7 @@
-﻿using GTBA.ViewModels;
+﻿using GTBA.Models;
+using GTBA.ViewModels;
+using GTBA.ViewModels.Games;
+using GTBA.Views.Games;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -27,10 +30,23 @@ namespace GTBA.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var game = (Game)e.Item;
+            await Navigation.PushModalAsync(new NavigationPage(new GameDetailPage(new GameDetailViewModel(game))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async void AddGameBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewGamePage()));
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Games.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

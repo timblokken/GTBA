@@ -28,8 +28,6 @@
                                      HorizontalOptions="CenterAndExpand">
                             <Label Text="{Binding FranchiseName}"
                                    Style="{DynamicResource ListItemTextStyle}" />
-                            <!--<Label Text="{Binding .}"
-                                   Style="{DynamicResource ListItemDetailTextStyle}" />-->
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
