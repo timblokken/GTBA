@@ -1,4 +1,5 @@
 ﻿using GTBA.ViewModels;
+using GTBA.Views.Games;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -31,6 +32,18 @@ namespace GTBA.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async void AddGameBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewGamePage()));
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Games.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }
