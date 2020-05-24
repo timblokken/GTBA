@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:views="clr-namespace:GTBA.Views"
+            mc:Ignorable="d"
+            x:Class="GTBA.Views.FranchiseTabbedPage"
+            Title="{Binding Title}">
+    <!--Pages can be added as references or inline-->
+    <TabbedPage.Children>
+        <NavigationPage Title="Movies">
+            <x:Arguments>
+                <!--<views:MoviesListPage BindingContext="{Binding MoviesViewModel}"/>-->
+                <views:MoviesListPage/>
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Series">
+            <x:Arguments>
+                <!--<views:SeriesListPage BindingContext="{Binding MoviesViewModel}"/>-->
+                <views:SeriesListPage/>
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Games">
+            <x:Arguments>
+                <!--<views:GamesListPage BindingContext="{Binding MoviesViewModel}"/>-->
+                <views:GamesListPage/>
+            </x:Arguments>
+        </NavigationPage>
+
+    </TabbedPage.Children>
+</TabbedPage>
