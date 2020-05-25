@@ -25,6 +25,13 @@ namespace GTBA.Views
             BindingContext = viewModel = new MoviesViewModel();
         }
 
+        public MoviesListPage(MoviesViewModel viewModel)
+        {
+            InitializeComponent();
+
+            BindingContext = this.viewModel = viewModel;
+        }
+
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)

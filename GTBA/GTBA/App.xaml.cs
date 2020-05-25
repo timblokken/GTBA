@@ -19,7 +19,7 @@ namespace GTBA
             DependencyService.Register<SeriesDataStore>();
             DependencyService.Register<GamesDataStore>();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

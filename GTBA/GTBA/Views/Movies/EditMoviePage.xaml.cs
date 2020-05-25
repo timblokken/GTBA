@@ -22,7 +22,7 @@ namespace GTBA.Views.Movies
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Movie);
+            MessagingCenter.Send(this, "EditMovie", viewModel.Movie);
             await Navigation.PopModalAsync();
         }
 
