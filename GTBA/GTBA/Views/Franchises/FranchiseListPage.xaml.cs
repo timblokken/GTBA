@@ -33,7 +33,7 @@ namespace GTBA.Views
                 return;
 
             var franchise = (Franchise)e.Item;
-            await Navigation.PushModalAsync((new FranchiseTabbedPage(new FranchiseTabbedViewModel(franchise))));
+            await Navigation.PushModalAsync(new NavigationPage(new FranchiseTabbedPage(new FranchiseTabbedViewModel(franchise))));
 
             //var franchise = (Franchise)e.Item;
             //await Navigation.PushModalAsync(new NavigationPage(new FranchiseDetailPage(new FranchiseDetailViewModel(franchise))));

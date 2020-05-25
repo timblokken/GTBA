@@ -7,21 +7,21 @@ namespace GTBA.ViewModels
 {
     public class FranchiseTabbedViewModel : BaseViewModel
     {
-        MoviesViewModel moviesViewModel;
-        SeriesViewModel seriesViewModel;
-        GamesViewModel gamesViewModel;
+        public MoviesViewModel MoviesViewModel { get; set; }
+        public SeriesViewModel SeriesViewModel { get; set; }
+        public GamesViewModel GamesViewModel { get; set; }
 
         public FranchiseTabbedViewModel(Franchise franchise)
         {
             Title = franchise.FranchiseName;
 
-            //moviesViewModel = new MoviesViewModel(franchise);
-            //seriesViewModel = new SeriesViewModel(franchise);
-            //gamesViewModel = new GamesViewModel(franchise);
+            MoviesViewModel = new MoviesViewModel(franchise);
+            SeriesViewModel = new SeriesViewModel(franchise);
+            GamesViewModel = new GamesViewModel(franchise);
 
-            moviesViewModel = new MoviesViewModel();
-            seriesViewModel = new SeriesViewModel();
-            gamesViewModel = new GamesViewModel();
+            //moviesViewModel = new MoviesViewModel();
+            //seriesViewModel = new SeriesViewModel();
+            //gamesViewModel = new GamesViewModel();
         }
     }
 }

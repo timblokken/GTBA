@@ -20,6 +20,10 @@ namespace GTBA.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+
+            this.Children.Add(new MoviesListPage(viewModel.MoviesViewModel));
+            this.Children.Add(new SeriesListPage(viewModel.SeriesViewModel));
+            this.Children.Add(new GamesListPage(viewModel.GamesViewModel));
         }
     }
 }

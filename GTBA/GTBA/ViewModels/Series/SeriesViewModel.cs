@@ -16,9 +16,9 @@ namespace GTBA.ViewModels
         public IDataStore<Serie> DataStore => DependencyService.Get<IDataStore<Serie>>();
         public ObservableCollection<Serie> Series { get; set; }
         public Command LoadItemsCommand { get; set; }
-        public SeriesViewModel()
+        public SeriesViewModel(Franchise franchise = null)
         {
-            Title = "GTBA";
+            Title = franchise != null ? "Series" : "GTBA";
             Series = new ObservableCollection<Serie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

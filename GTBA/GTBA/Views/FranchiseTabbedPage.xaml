@@ -8,27 +8,27 @@
             x:Class="GTBA.Views.FranchiseTabbedPage"
             Title="{Binding Title}">
     <!--Pages can be added as references or inline-->
-    <TabbedPage.Children>
+    <!--<TabbedPage.Children>
         <NavigationPage Title="Movies">
             <x:Arguments>
-                <!--<views:MoviesListPage BindingContext="{Binding MoviesViewModel}"/>-->
-                <views:MoviesListPage/>
+                <views:MoviesListPage BindingContext="{Binding moviesViewModel}"/>
+                --><!--<views:MoviesListPage/>--><!--
             </x:Arguments>
         </NavigationPage>
 
         <NavigationPage Title="Series">
             <x:Arguments>
-                <!--<views:SeriesListPage BindingContext="{Binding MoviesViewModel}"/>-->
+                --><!--<views:SeriesListPage BindingContext="{Binding MoviesViewModel}"/>--><!--
                 <views:SeriesListPage/>
             </x:Arguments>
         </NavigationPage>
 
         <NavigationPage Title="Games">
             <x:Arguments>
-                <!--<views:GamesListPage BindingContext="{Binding MoviesViewModel}"/>-->
+                --><!--<views:GamesListPage BindingContext="{Binding MoviesViewModel}"/>--><!--
                 <views:GamesListPage/>
             </x:Arguments>
         </NavigationPage>
 
-    </TabbedPage.Children>
+    </TabbedPage.Children>-->
 </TabbedPage>
