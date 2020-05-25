@@ -23,7 +23,7 @@ namespace GTBA.Views.Series
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Serie);
+            MessagingCenter.Send(this, "EditSerie", viewModel.Serie);
             await Navigation.PopModalAsync();
         }
 

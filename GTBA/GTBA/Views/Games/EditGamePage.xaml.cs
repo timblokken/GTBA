@@ -23,7 +23,7 @@ namespace GTBA.Views.Games
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Game);
+            MessagingCenter.Send(this, "EditGame", viewModel.Game);
             await Navigation.PopModalAsync();
         }
 
