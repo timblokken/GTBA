@@ -1,4 +1,5 @@
 ﻿using GTBA.Models;
+using GTBA.Services.DataStores;
 using GTBA.Services.Interfaces;
 using GTBA.ViewModels.Movies;
 using GTBA.Views.Movies;
@@ -14,12 +15,12 @@ namespace GTBA.ViewModels
 {
     public class MoviesViewModel : BaseViewModel
     {
-        public IDataStore<Movie> DataStore => DependencyService.Get<IDataStore<Movie>>();
+        public IMovieDataStore DataStore => DependencyService.Get<IMovieDataStore>();
         public ObservableCollection<Movie> Movies { get; set; }
         public Command LoadItemsCommand { get; set; }
         public MoviesViewModel(Franchise franchise = null)
         {
-            Title = franchise!=null ? "Movies" : "GTBA";
+            Title = franchise != null ? "Movies" : "GTBA";
             //Title = franchise?.FranchiseName : "GTBA";
 
             //if (franchise != null)
@@ -32,7 +33,7 @@ namespace GTBA.ViewModels
             //}
 
             Movies = new ObservableCollection<Movie>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 
             MessagingCenter.Subscribe<NewMovieViewModel, Movie>(this, "AddMovie", async (obj, movie) =>
             {
@@ -42,7 +43,7 @@ namespace GTBA.ViewModels
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadItemsCommand(Franchise franchise = null)
         {
             if (IsBusy)
                 return;
@@ -52,7 +53,15 @@ namespace GTBA.ViewModels
             try
             {
                 Movies.Clear();
-                var movies = await DataStore.GetItemsAsync(true);
+                IEnumerable<Movie> movies;
+                if (franchise != null)
+                {
+                    movies = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                }
+                else
+                {
+                    movies = await DataStore.GetItemsAsync(true);
+                }
                 foreach (var movie in movies)
                 {
                     Movies.Add(movie);

@@ -13,14 +13,14 @@ namespace GTBA.ViewModels
 {
     public class GamesViewModel : BaseViewModel
     {
-        public IDataStore<Game> DataStore => DependencyService.Get<IDataStore<Game>>();
+        public IGamesDataStore DataStore => DependencyService.Get<IGamesDataStore>();
         public ObservableCollection<Game> Games { get; set; }
         public Command LoadItemsCommand { get; set; }
         public GamesViewModel(Franchise franchise = null)
         {
             Title = franchise != null ? "Games" : "GTBA";
             Games = new ObservableCollection<Game>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 
             MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddMovie", async (obj, game) =>
             {
@@ -30,7 +30,7 @@ namespace GTBA.ViewModels
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadItemsCommand(Franchise franchise = null)
         {
             if (IsBusy)
                 return;
@@ -40,10 +40,19 @@ namespace GTBA.ViewModels
             try
             {
                 Games.Clear();
-                var movies = await DataStore.GetItemsAsync(true);
-                foreach (var movie in movies)
+                IEnumerable<Game> games;
+                if (franchise != null)
                 {
-                    Games.Add(movie);
+                    games = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                }
+                else
+                {
+                    games = await DataStore.GetItemsAsync(true);
+                }
+
+                foreach (var game in games)
+                {
+                    Games.Add(game);
                 }
             }
             catch (Exception ex)

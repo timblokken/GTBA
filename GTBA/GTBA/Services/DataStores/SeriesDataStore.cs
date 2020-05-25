@@ -1,8 +1,11 @@
 ﻿using GTBA.Models;
 using GTBA.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GTBA.Services.DataStores
 {
@@ -11,6 +14,11 @@ namespace GTBA.Services.DataStores
         public SeriesDataStore()
         {
             table = context.Series;
+        }
+
+        public async Task<IEnumerable<Serie>> GetItemsByFranhciseAsync(int franId)
+        {
+            return await table.Where(f => f.FranchiseId == franId).ToListAsync();
         }
     }
 }

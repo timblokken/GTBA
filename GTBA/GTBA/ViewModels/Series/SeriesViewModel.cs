@@ -13,14 +13,14 @@ namespace GTBA.ViewModels
 {
     public class SeriesViewModel : BaseViewModel
     {
-        public IDataStore<Serie> DataStore => DependencyService.Get<IDataStore<Serie>>();
+        public ISeriesDataStore DataStore => DependencyService.Get<ISeriesDataStore>();
         public ObservableCollection<Serie> Series { get; set; }
         public Command LoadItemsCommand { get; set; }
         public SeriesViewModel(Franchise franchise = null)
         {
             Title = franchise != null ? "Series" : "GTBA";
             Series = new ObservableCollection<Serie>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 
             MessagingCenter.Subscribe<NewSerieViewModel, Serie>(this, "AddSerie", async (obj, serie) =>
             {
@@ -30,7 +30,7 @@ namespace GTBA.ViewModels
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadItemsCommand(Franchise franchise = null)
         {
             if (IsBusy)
                 return;
@@ -40,10 +40,18 @@ namespace GTBA.ViewModels
             try
             {
                 Series.Clear();
-                var movies = await DataStore.GetItemsAsync(true);
-                foreach (var movie in movies)
+                IEnumerable<Serie> series;
+                if (franchise != null)
                 {
-                    Series.Add(movie);
+                    series = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                }
+                else
+                {
+                    series = await DataStore.GetItemsAsync(true);
+                }
+                foreach (var serie in series)
+                {
+                    Series.Add(serie);
                 }
             }
             catch (Exception ex)

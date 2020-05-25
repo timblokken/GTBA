@@ -1,9 +1,11 @@
 ﻿using GTBA.Models;
 using GTBA.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace GTBA.Services.DataStores
 {
@@ -12,6 +14,11 @@ namespace GTBA.Services.DataStores
         public GamesDataStore()
         {
             table = context.Games;
+        }
+
+        public async Task<IEnumerable<Game>> GetItemsByFranhciseAsync(int franId)
+        {
+            return await table.Where(f => f.FranchiseId == franId).ToListAsync();
         }
     }
 }
