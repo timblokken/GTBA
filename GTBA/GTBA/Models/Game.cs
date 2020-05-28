@@ -6,21 +6,26 @@ namespace GTBA.Models
 {
     public class Game : BaseModel
     {
-        int gameId;
+        //id of the game
+        //Primary Key , auto incremented
+        private int gameId;
         public int GameId
         {
             get { return gameId; }
             set { SetProperty(ref gameId, value); }
         }
 
-        string gameName = string.Empty;
+        //Name of the game
+        private string gameName = string.Empty;
         public string GameName
         {
             get { return gameName; }
             set { SetProperty(ref gameName, value); }
         }
 
-        int franchiseId;
+        //id of the franchise the game is in
+        //foreign key
+        private int franchiseId;
         public int FranchiseId
         {
             get { return franchiseId; }
