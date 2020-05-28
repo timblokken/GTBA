@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GTBA.Views.Series.NewSeriePage">
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
                      Clicked="Cancel_Clicked" />
@@ -16,11 +16,25 @@
     <ContentPage.Content>
         <StackLayout Spacing="20"
                      Padding="15">
+            
             <Label Text="Name"
                    FontSize="Medium" />
             <Entry Text="{Binding Serie.SerieName}"
                    Placeholder="Name of serie"
                    FontSize="Small" />
+            
+            <Label Text="Seasons"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Serie.Seasons}"
+                   Placeholder="Number of seasons"
+                   FontSize="Small" />
+            
+            <Label Text="Episodes"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Serie.NrOfEpisodes}"
+                   Placeholder="Number of episodes"
+                   FontSize="Small" />
+            
             <Label Text="Franchise"
                    FontSize="Medium" />
             <Picker x:Name="FranchisePicker"
