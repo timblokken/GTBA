@@ -17,12 +17,11 @@ namespace GTBA.ViewModels.Series
             Title = serie?.SerieName;
             Serie = serie;
 
-            MessagingCenter.Subscribe<EditSeriePage, Serie>(this, "EditMovie", async (obj, update) =>
+            MessagingCenter.Subscribe<EditSeriePage, Serie>(this, "EditSerie", async (obj, update) =>
             {
-                var updatedItem = update as Serie;
-                this.Serie = updatedItem;
-                this.Title = updatedItem.SerieName;
-                await DataStore.UpdateItemAsync(updatedItem);
+                this.Serie = update;
+                this.Title = update.SerieName;
+                await DataStore.UpdateItemAsync(update);
             });
         }
     }

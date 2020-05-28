@@ -24,9 +24,8 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddGame", async (obj, game) =>
             {
-                var newItem = game as Game;
-                Games.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                Games.Add(game);
+                await DataStore.AddItemAsync(game);
                 await ExecuteLoadItemsCommand();
             });
         }
