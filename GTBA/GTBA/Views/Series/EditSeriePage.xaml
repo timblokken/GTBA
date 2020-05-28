@@ -16,10 +16,22 @@
     <ContentPage.Content>
         <StackLayout Spacing="20"
                      Padding="15">
+            
             <Label Text="Name:"
                    FontSize="Medium" />
             <Entry Text="{Binding Serie.SerieName}"
                    FontSize="Small" />
+            
+            <Label Text="Seasons"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Serie.Seasons}"
+                   FontSize="Small" />
+            
+            <Label Text="Episodes"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Serie.NrOfEpisodes}"
+                   FontSize="Small" />
+            
             <Label Text="Franchise:"
                    FontSize="Medium" />
             <Entry Text="{Binding Serie.Franchise.FranchiseName}"
