@@ -19,10 +19,9 @@ namespace GTBA.ViewModels.Movies
 
             MessagingCenter.Subscribe<EditMoviePage, Movie>(this, "EditMovie", async (obj, update) =>
             {
-                var updatedItem = update as Movie;
-                this.Movie = updatedItem;
-                this.Title = updatedItem.MovieName;
-                await DataStore.UpdateItemAsync(updatedItem);
+                this.Movie = update;
+                this.Title = update.MovieName;
+                await DataStore.UpdateItemAsync(update);
             });
         }
     }

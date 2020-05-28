@@ -37,9 +37,9 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<NewMovieViewModel, Movie>(this, "AddMovie", async (obj, movie) =>
             {
-                var newItem = movie as Movie;
-                Movies.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                Movies.Add(movie);
+                await DataStore.AddItemAsync(movie);
+                await ExecuteLoadItemsCommand();
             });
         }
 

@@ -25,7 +25,7 @@
                    FontSize="Small" />
             <Label Text="Franchise:"
                    FontSize="Medium" />
-            <Label Text="{Binding Game.Franchise}"
+            <Label Text="{Binding Game.Franchise.FranchiseName}"
                    FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>

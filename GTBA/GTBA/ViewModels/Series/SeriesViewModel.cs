@@ -24,9 +24,9 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<NewSerieViewModel, Serie>(this, "AddSerie", async (obj, serie) =>
             {
-                var newItem = serie as Serie;
-                Series.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                Series.Add(serie);
+                await DataStore.AddItemAsync(serie);
+                await ExecuteLoadItemsCommand();
             });
         }
 

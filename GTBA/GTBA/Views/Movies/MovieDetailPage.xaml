@@ -29,7 +29,7 @@
                    FontSize="Small" />
             <Label Text="Franchise:"
                    FontSize="Medium" />
-            <Label Text="{Binding Movie.Franchise}"
+            <Label Text="{Binding Movie.Franchise.FranchiseName}"
                    FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
