@@ -34,7 +34,7 @@ namespace GTBA.ViewModels.Games
         public void Save()
         {
             Game.FranchiseId = selectedFranchise.FranchiseId;
-            MessagingCenter.Send(this, "AddMovie", Game);
+            MessagingCenter.Send(this, "AddGame", Game);
         }
         async void GetFranchises()
         {

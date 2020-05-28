@@ -12,7 +12,7 @@ namespace GTBA.Services.DataStores
         protected GTBAContext context = new GTBAContext();
         protected DbSet<T> table;
 
-        public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
+        public virtual async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
         {
             return await table.ToListAsync();
         }

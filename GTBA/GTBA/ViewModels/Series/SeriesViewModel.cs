@@ -27,6 +27,7 @@ namespace GTBA.ViewModels
                 var newItem = serie as Serie;
                 Series.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
+                await ExecuteLoadItemsCommand();
             });
         }
 

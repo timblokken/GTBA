@@ -40,6 +40,7 @@ namespace GTBA.ViewModels
                 var newItem = movie as Movie;
                 Movies.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
+                await ExecuteLoadItemsCommand();
             });
         }
 

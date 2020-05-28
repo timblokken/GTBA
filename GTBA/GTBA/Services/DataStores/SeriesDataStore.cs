@@ -20,5 +20,12 @@ namespace GTBA.Services.DataStores
         {
             return await table.Where(f => f.FranchiseId == franId).ToListAsync();
         }
+
+        public override async Task<IEnumerable<Serie>> GetItemsAsync(bool forceRefresh = false)
+        {
+            var series = table.Include(s => s.Franchise);
+            //var test = await games.ToListAsync();
+            return await series.ToListAsync();
+        }
     }
 }

@@ -22,11 +22,12 @@ namespace GTBA.ViewModels
             Games = new ObservableCollection<Game>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 
-            MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddMovie", async (obj, game) =>
+            MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddGame", async (obj, game) =>
             {
                 var newItem = game as Game;
                 Games.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
+                await ExecuteLoadItemsCommand();
             });
         }
 
