@@ -26,7 +26,7 @@ namespace GTBA.ViewModels
             {
                 Series.Add(serie);
                 await DataStore.AddItemAsync(serie);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 

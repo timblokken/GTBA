@@ -17,7 +17,7 @@ namespace GTBA.ViewModels.Series
             Title = serie?.SerieName;
             Serie = serie;
 
-            MessagingCenter.Subscribe<EditSeriePage, Serie>(this, "EditSerie", async (obj, update) =>
+            MessagingCenter.Subscribe<EditSerieViewModel, Serie>(this, "EditSerie", async (obj, update) =>
             {
                 Serie = update;
                 Title = update.SerieName;

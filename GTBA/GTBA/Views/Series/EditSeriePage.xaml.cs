@@ -13,8 +13,8 @@ namespace GTBA.Views.Series
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSeriePage : ContentPage
     {
-        SerieDetailViewModel viewModel;
-        public EditSeriePage(SerieDetailViewModel viewModel)
+        EditSerieViewModel viewModel;
+        public EditSeriePage(EditSerieViewModel viewModel)
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace GTBA.Views.Series
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditSerie", viewModel.Serie);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 

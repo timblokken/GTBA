@@ -28,7 +28,7 @@ namespace GTBA.Views.Series
 
         async void EditBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new EditSeriePage(viewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditSeriePage(new EditSerieViewModel(viewModel.Serie))));
         }
     }
 }
