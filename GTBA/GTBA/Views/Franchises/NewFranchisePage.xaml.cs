@@ -1,4 +1,5 @@
 ﻿using GTBA.Models;
+using GTBA.ViewModels.Franchises;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +13,18 @@ namespace GTBA.Views.Franchises
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewFranchisePage : ContentPage
     {
-
-        public Franchise Franchise { get; set; }
+        NewFranchiseViewModel viewModel;
+        
         public NewFranchisePage()
         {
             InitializeComponent();
 
-            Franchise = new Franchise();
-
-            BindingContext = this;
+            BindingContext = viewModel = new NewFranchiseViewModel();
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddFranchise", Franchise);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 

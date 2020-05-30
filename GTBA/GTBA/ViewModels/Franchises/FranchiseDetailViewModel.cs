@@ -19,7 +19,7 @@ namespace GTBA.ViewModels.Franchises
             Title = franchise?.FranchiseName;
             Franchise = franchise;
 
-            MessagingCenter.Subscribe<EditFranchisePage, Franchise>(this, "EditFranchise", async (obj, update) =>
+            MessagingCenter.Subscribe<EditFranchiseViewModel, Franchise>(this, "EditFranchise", async (obj, update) =>
             {
                 Franchise = update;
                 Title = update.FranchiseName;

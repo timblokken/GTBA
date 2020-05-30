@@ -1,6 +1,7 @@
 ﻿using GTBA.Models;
 using GTBA.Services;
 using GTBA.Services.Interfaces;
+using GTBA.ViewModels.Franchises;
 using GTBA.Views.Franchises;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,10 @@ namespace GTBA.ViewModels
             Franchises = new ObservableCollection<Franchise>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewFranchisePage, Franchise>(this, "AddFranchise", async (obj, franchise) =>
+            MessagingCenter.Subscribe<NewFranchiseViewModel, Franchise>(this, "AddFranchise", async (obj, franchise) =>
             {
-                var newItem = franchise as Franchise;
-                Franchises.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                Franchises.Add(franchise);
+                await DataStore.AddItemAsync(franchise);
             });
         }
 

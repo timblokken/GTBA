@@ -28,7 +28,7 @@ namespace GTBA.Views.Franchises
 
         async void EditBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(viewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(new EditFranchiseViewModel(viewModel.Franchise))));
         }
     }
 }
