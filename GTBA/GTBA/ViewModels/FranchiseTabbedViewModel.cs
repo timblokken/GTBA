@@ -18,10 +18,6 @@ namespace GTBA.ViewModels
             MoviesViewModel = new MoviesViewModel(franchise);
             SeriesViewModel = new SeriesViewModel(franchise);
             GamesViewModel = new GamesViewModel(franchise);
-
-            //moviesViewModel = new MoviesViewModel();
-            //seriesViewModel = new SeriesViewModel();
-            //gamesViewModel = new GamesViewModel();
         }
     }
 }

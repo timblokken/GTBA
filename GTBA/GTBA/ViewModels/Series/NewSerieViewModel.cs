@@ -19,7 +19,6 @@ namespace GTBA.ViewModels.Series
         public NewSerieViewModel()
         {
             Serie = new Serie();
-
             Franchises = new ObservableCollection<Franchise>();
 
             GetFranchises();

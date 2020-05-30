@@ -18,7 +18,6 @@ namespace GTBA.ViewModels.Movies
         public NewMovieViewModel()
         {
             Movie = new Movie();
-
             Franchises = new ObservableCollection<Franchise>();
 
             GetFranchises();

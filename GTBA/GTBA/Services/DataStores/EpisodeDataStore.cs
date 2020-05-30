@@ -24,7 +24,6 @@ namespace GTBA.Services.DataStores
         public override async Task<IEnumerable<Episode>> GetItemsAsync(bool forceRefresh = false)
         {
             var episodes = table.Include(e => e.Serie);
-            //var test = await movies.ToListAsync();
             return await episodes.ToListAsync();
         }
     }

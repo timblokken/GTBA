@@ -19,8 +19,8 @@ namespace GTBA.ViewModels.Series
 
             MessagingCenter.Subscribe<EditSeriePage, Serie>(this, "EditSerie", async (obj, update) =>
             {
-                this.Serie = update;
-                this.Title = update.SerieName;
+                Serie = update;
+                Title = update.SerieName;
                 await DataStore.UpdateItemAsync(update);
             });
         }

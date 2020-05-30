@@ -14,12 +14,5 @@ namespace GTBA.Services.DataStores
         {
             table = context.Franchises;
         }
-
-        //public override async Task<IEnumerable<Franchise>> GetItemsAsync(bool forceRefresh = false)
-        //{
-        //    var test2 = table.Include(f => f.Games);
-        //    var test = await test2.ToListAsync();
-        //    return test;
-        //}
     }
 }

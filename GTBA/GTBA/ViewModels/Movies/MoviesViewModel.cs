@@ -21,17 +21,6 @@ namespace GTBA.ViewModels
         public MoviesViewModel(Franchise franchise = null)
         {
             Title = franchise != null ? "Movies" : "GTBA";
-            //Title = franchise?.FranchiseName : "GTBA";
-
-            //if (franchise != null)
-            //{
-            //    Title = franchise.FranchiseName;
-            //}
-            //else
-            //{
-            //    Title = "GTBA";
-            //}
-
             Movies = new ObservableCollection<Movie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 

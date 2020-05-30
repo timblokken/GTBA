@@ -20,8 +20,8 @@ namespace GTBA.ViewModels.Games
 
             MessagingCenter.Subscribe<EditGamePage, Game>(this, "EditGame", async (obj, update) =>
             {
-                this.Game = update;
-                this.Title = update.GameName;
+                Game = update;
+                Title = update.GameName;
                 await DataStore.UpdateItemAsync(update);
             });
         }

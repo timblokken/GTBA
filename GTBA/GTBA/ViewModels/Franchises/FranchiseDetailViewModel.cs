@@ -21,10 +21,9 @@ namespace GTBA.ViewModels.Franchises
 
             MessagingCenter.Subscribe<EditFranchisePage, Franchise>(this, "EditFranchise", async (obj, update) =>
             {
-                var updatedItem = update as Franchise;
-                this.Franchise = updatedItem;
-                this.Title = updatedItem.FranchiseName;
-                await DataStore.UpdateItemAsync(updatedItem);
+                Franchise = update;
+                Title = update.FranchiseName;
+                await DataStore.UpdateItemAsync(update);
             });
         }
 
