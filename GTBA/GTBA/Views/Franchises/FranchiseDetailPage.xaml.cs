@@ -21,19 +21,6 @@ namespace GTBA.Views.Franchises
             BindingContext = this.viewModel = viewModel;
         }
 
-        public FranchiseDetailPage()
-        {
-            InitializeComponent();
-
-            var franchise = new Franchise
-            {
-                FranchiseName = "Item 1",
-            };
-
-            viewModel = new FranchiseDetailViewModel(franchise);
-            BindingContext = viewModel;
-        }
-
         async void BackBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
@@ -41,7 +28,7 @@ namespace GTBA.Views.Franchises
 
         async void EditBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(viewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(new EditFranchiseViewModel(viewModel.Franchise))));
         }
     }
 }

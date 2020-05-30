@@ -9,30 +9,10 @@
             Title="GTBA">
 
     <TabbedPage.Children>
-        <views:FranchiseListPage Title="Franchises">
-            <!--<x:Arguments>
-                <views:FranchiseListPage />
-            </x:Arguments>-->
-        </views:FranchiseListPage>
-
-        <views:MoviesListPage Title="Movies">
-            <!--<x:Arguments>
-                <views:MoviesListPage />
-            </x:Arguments>-->
-        </views:MoviesListPage>
-
-        <views:SeriesListPage Title="Series">
-            <!--<x:Arguments>
-                <views:SeriesListPage />
-            </x:Arguments>-->
-        </views:SeriesListPage>
-
-        <views:GamesListPage Title="Games">
-            <!--<x:Arguments>
-                <views:GamesListPage />
-            </x:Arguments>-->
-        </views:GamesListPage>
-
+        <views:FranchiseListPage Title="Franchises" />
+        <views:MoviesListPage Title="Movies" />
+        <views:SeriesListPage Title="Series" />
+        <views:GamesListPage Title="Games" />
     </TabbedPage.Children>
     
 </TabbedPage>

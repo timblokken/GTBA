@@ -10,17 +10,17 @@ namespace GTBA.ViewModels.Movies
 {
     public class MovieDetailViewModel : BaseViewModel
     {
-        public IDataStore<Movie> DataStore => DependencyService.Get<IDataStore<Movie>>();
+        public IMovieDataStore DataStore => DependencyService.Get<IMovieDataStore>();
         public Movie Movie { get; set; }
         public MovieDetailViewModel(Movie movie = null)
         {
             Title = movie?.MovieName;
             Movie = movie;
 
-            MessagingCenter.Subscribe<EditMoviePage, Movie>(this, "EditMovie", async (obj, update) =>
+            MessagingCenter.Subscribe<EditMovieViewModel, Movie>(this, "EditMovie", async (obj, update) =>
             {
-                this.Movie = update;
-                this.Title = update.MovieName;
+                Movie = update;
+                Title = update.MovieName;
                 await DataStore.UpdateItemAsync(update);
             });
         }

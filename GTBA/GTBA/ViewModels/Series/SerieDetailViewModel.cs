@@ -10,17 +10,17 @@ namespace GTBA.ViewModels.Series
 {
     public class SerieDetailViewModel : BaseViewModel
     {
-        public IDataStore<Serie> DataStore => DependencyService.Get<IDataStore<Serie>>();
+        public ISeriesDataStore DataStore => DependencyService.Get<ISeriesDataStore>();
         public Serie Serie { get; set; }
         public SerieDetailViewModel(Serie serie = null)
         {
             Title = serie?.SerieName;
             Serie = serie;
 
-            MessagingCenter.Subscribe<EditSeriePage, Serie>(this, "EditSerie", async (obj, update) =>
+            MessagingCenter.Subscribe<EditSerieViewModel, Serie>(this, "EditSerie", async (obj, update) =>
             {
-                this.Serie = update;
-                this.Title = update.SerieName;
+                Serie = update;
+                Title = update.SerieName;
                 await DataStore.UpdateItemAsync(update);
             });
         }

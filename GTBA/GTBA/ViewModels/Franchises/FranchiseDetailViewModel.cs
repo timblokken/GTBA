@@ -11,7 +11,7 @@ namespace GTBA.ViewModels.Franchises
 {
     public class FranchiseDetailViewModel : BaseViewModel
     {
-        public IDataStore<Franchise> DataStore => DependencyService.Get<IDataStore<Franchise>>();
+        public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public Franchise Franchise { get; set; }
 
         public FranchiseDetailViewModel(Franchise franchise = null)
@@ -19,12 +19,11 @@ namespace GTBA.ViewModels.Franchises
             Title = franchise?.FranchiseName;
             Franchise = franchise;
 
-            MessagingCenter.Subscribe<EditFranchisePage, Franchise>(this, "EditFranchise", async (obj, update) =>
+            MessagingCenter.Subscribe<EditFranchiseViewModel, Franchise>(this, "EditFranchise", async (obj, update) =>
             {
-                var updatedItem = update as Franchise;
-                this.Franchise = updatedItem;
-                this.Title = updatedItem.FranchiseName;
-                await DataStore.UpdateItemAsync(updatedItem);
+                Franchise = update;
+                Title = update.FranchiseName;
+                await DataStore.UpdateItemAsync(update);
             });
         }
 

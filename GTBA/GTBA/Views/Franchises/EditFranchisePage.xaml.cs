@@ -12,8 +12,8 @@ namespace GTBA.Views.Franchises
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditFranchisePage : ContentPage
     {
-        FranchiseDetailViewModel viewModel;
-        public EditFranchisePage(FranchiseDetailViewModel viewModel)
+        EditFranchiseViewModel viewModel;
+        public EditFranchisePage(EditFranchiseViewModel viewModel)
         {
             InitializeComponent();
 
@@ -22,7 +22,7 @@ namespace GTBA.Views.Franchises
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditFranchise", viewModel.Franchise);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 

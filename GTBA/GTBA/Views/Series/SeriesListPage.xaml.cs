@@ -40,8 +40,8 @@ namespace GTBA.Views
                 return;
 
             var serie = (Serie)e.Item;
-            //await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
             await Navigation.PushAsync(new EpisodesListPage(new EpisodesViewModel(serie)));
+            //await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

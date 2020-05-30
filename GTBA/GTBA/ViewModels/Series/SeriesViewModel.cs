@@ -26,7 +26,7 @@ namespace GTBA.ViewModels
             {
                 Series.Add(serie);
                 await DataStore.AddItemAsync(serie);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 
@@ -43,7 +43,7 @@ namespace GTBA.ViewModels
                 IEnumerable<Serie> series;
                 if (franchise != null)
                 {
-                    series = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                    series = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
                 }
                 else
                 {

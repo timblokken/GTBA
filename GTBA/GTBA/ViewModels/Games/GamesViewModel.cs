@@ -26,7 +26,7 @@ namespace GTBA.ViewModels
             {
                 Games.Add(game);
                 await DataStore.AddItemAsync(game);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 
@@ -43,7 +43,7 @@ namespace GTBA.ViewModels
                 IEnumerable<Game> games;
                 if (franchise != null)
                 {
-                    games = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                    games = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
                 }
                 else
                 {

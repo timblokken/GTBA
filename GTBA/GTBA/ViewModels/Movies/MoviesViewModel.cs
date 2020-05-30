@@ -21,17 +21,6 @@ namespace GTBA.ViewModels
         public MoviesViewModel(Franchise franchise = null)
         {
             Title = franchise != null ? "Movies" : "GTBA";
-            //Title = franchise?.FranchiseName : "GTBA";
-
-            //if (franchise != null)
-            //{
-            //    Title = franchise.FranchiseName;
-            //}
-            //else
-            //{
-            //    Title = "GTBA";
-            //}
-
             Movies = new ObservableCollection<Movie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 
@@ -39,7 +28,7 @@ namespace GTBA.ViewModels
             {
                 Movies.Add(movie);
                 await DataStore.AddItemAsync(movie);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 
@@ -56,7 +45,7 @@ namespace GTBA.ViewModels
                 IEnumerable<Movie> movies;
                 if (franchise != null)
                 {
-                    movies = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                    movies = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
                 }
                 else
                 {

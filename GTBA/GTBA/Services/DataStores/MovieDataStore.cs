@@ -16,7 +16,7 @@ namespace GTBA.Services.DataStores
             table = context.Movies;
         }
 
-        public async Task<IEnumerable<Movie>> GetItemsByFranhciseAsync(int franId)
+        public async Task<IEnumerable<Movie>> GetItemsByFranchiseAsync(int franId)
         {
             return await table.Where(f => f.FranchiseId == franId).ToListAsync();
         }
@@ -24,7 +24,6 @@ namespace GTBA.Services.DataStores
         public override async Task<IEnumerable<Movie>> GetItemsAsync(bool forceRefresh = false)
         {
             var movies = table.Include(m => m.Franchise);
-            //var test = await movies.ToListAsync();
             return await movies.ToListAsync();
         }
     }

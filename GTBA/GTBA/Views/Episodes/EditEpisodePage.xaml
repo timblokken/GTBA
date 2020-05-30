@@ -28,7 +28,7 @@
             <Entry Text="{Binding Episode.Season}"
                    FontSize="Small" />
 
-            <Label Text="Episodes"
+            <Label Text="Episode Number"
                    FontSize="Medium" />
             <Entry Text="{Binding Episode.EpisodeNr}"
                    FontSize="Small" />
