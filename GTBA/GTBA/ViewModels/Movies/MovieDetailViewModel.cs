@@ -17,7 +17,7 @@ namespace GTBA.ViewModels.Movies
             Title = movie?.MovieName;
             Movie = movie;
 
-            MessagingCenter.Subscribe<EditMoviePage, Movie>(this, "EditMovie", async (obj, update) =>
+            MessagingCenter.Subscribe<EditMovieViewModel, Movie>(this, "EditMovie", async (obj, update) =>
             {
                 Movie = update;
                 Title = update.MovieName;

@@ -28,7 +28,7 @@ namespace GTBA.Views.Movies
 
         async void EditBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new EditMoviePage(viewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditMoviePage(new EditMovieViewModel(viewModel.Movie))));
         }
     }
 }

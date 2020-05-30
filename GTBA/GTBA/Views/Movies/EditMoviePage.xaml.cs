@@ -12,8 +12,8 @@ namespace GTBA.Views.Movies
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditMoviePage : ContentPage
     {
-        MovieDetailViewModel viewModel;
-        public EditMoviePage(MovieDetailViewModel viewModel)
+        EditMovieViewModel viewModel;
+        public EditMoviePage(EditMovieViewModel viewModel)
         {
             InitializeComponent();
 
@@ -22,7 +22,7 @@ namespace GTBA.Views.Movies
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditMovie", viewModel.Movie);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 

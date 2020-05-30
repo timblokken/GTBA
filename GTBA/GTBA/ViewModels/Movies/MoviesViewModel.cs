@@ -28,7 +28,7 @@ namespace GTBA.ViewModels
             {
                 Movies.Add(movie);
                 await DataStore.AddItemAsync(movie);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 
