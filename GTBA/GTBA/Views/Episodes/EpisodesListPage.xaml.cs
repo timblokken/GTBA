@@ -34,8 +34,8 @@ namespace GTBA.Views.Episodes
             if (e.Item == null)
                 return;
 
-            //var episode = (Episode)e.Item;
-            //await Navigation.PushModalAsync(new NavigationPage(new EpisodeDetailPage(new EpisodeDetailViewModel(episode))));
+            var episode = (Episode)e.Item;
+            await Navigation.PushModalAsync(new NavigationPage(new EpisodeDetailPage(new EpisodeDetailViewModel(episode))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
