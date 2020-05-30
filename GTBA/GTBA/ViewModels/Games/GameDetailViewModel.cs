@@ -10,7 +10,7 @@ namespace GTBA.ViewModels.Games
 {
     public class GameDetailViewModel : BaseViewModel
     {
-        public IDataStore<Game> DataStore => DependencyService.Get<IDataStore<Game>>();
+        public IGamesDataStore DataStore => DependencyService.Get<IGamesDataStore>();
         public Game Game { get; set; }
 
         public GameDetailViewModel(Game game = null)

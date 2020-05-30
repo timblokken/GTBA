@@ -10,7 +10,7 @@ namespace GTBA.ViewModels.Series
 {
     public class SerieDetailViewModel : BaseViewModel
     {
-        public IDataStore<Serie> DataStore => DependencyService.Get<IDataStore<Serie>>();
+        public ISeriesDataStore DataStore => DependencyService.Get<ISeriesDataStore>();
         public Serie Serie { get; set; }
         public SerieDetailViewModel(Serie serie = null)
         {

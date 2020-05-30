@@ -11,7 +11,7 @@ namespace GTBA.ViewModels.Series
     public class NewSerieViewModel : BaseViewModel
     {
 
-        public IDataStore<Franchise> DataStore => DependencyService.Get<IDataStore<Franchise>>();
+        public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public Serie Serie { get; set; }
         public ObservableCollection<Franchise> Franchises { get; set; }
         private Franchise selectedFranchise;

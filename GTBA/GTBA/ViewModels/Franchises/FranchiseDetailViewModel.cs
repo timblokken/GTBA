@@ -11,7 +11,7 @@ namespace GTBA.ViewModels.Franchises
 {
     public class FranchiseDetailViewModel : BaseViewModel
     {
-        public IDataStore<Franchise> DataStore => DependencyService.Get<IDataStore<Franchise>>();
+        public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public Franchise Franchise { get; set; }
 
         public FranchiseDetailViewModel(Franchise franchise = null)
