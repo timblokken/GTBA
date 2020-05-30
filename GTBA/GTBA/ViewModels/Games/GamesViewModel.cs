@@ -26,7 +26,7 @@ namespace GTBA.ViewModels
             {
                 Games.Add(game);
                 await DataStore.AddItemAsync(game);
-                await ExecuteLoadItemsCommand();
+                await ExecuteLoadItemsCommand(franchise);
             });
         }
 

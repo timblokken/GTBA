@@ -18,7 +18,7 @@ namespace GTBA.ViewModels.Games
             Title = game?.GameName;
             Game = game;
 
-            MessagingCenter.Subscribe<EditGamePage, Game>(this, "EditGame", async (obj, update) =>
+            MessagingCenter.Subscribe<EditGameViewModel, Game>(this, "EditGame", async (obj, update) =>
             {
                 Game = update;
                 Title = update.GameName;

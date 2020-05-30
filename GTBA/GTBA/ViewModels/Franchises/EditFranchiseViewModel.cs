@@ -9,7 +9,6 @@ namespace GTBA.ViewModels.Franchises
 {
     public class EditFranchiseViewModel : BaseViewModel
     {
-        public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public Franchise Franchise { get; set; }
         public EditFranchiseViewModel(Franchise franchise)
         {

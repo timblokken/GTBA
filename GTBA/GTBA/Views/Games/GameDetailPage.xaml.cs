@@ -28,7 +28,7 @@ namespace GTBA.Views.Games
 
         async void EditBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new EditGamePage(viewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new EditGamePage(new EditGameViewModel(viewModel.Game))));
         }
     }
 }

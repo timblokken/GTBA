@@ -13,8 +13,8 @@ namespace GTBA.Views.Games
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditGamePage : ContentPage
     {
-        GameDetailViewModel viewModel;
-        public EditGamePage(GameDetailViewModel viewModel)
+        EditGameViewModel viewModel;
+        public EditGamePage(EditGameViewModel viewModel)
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace GTBA.Views.Games
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "EditGame", viewModel.Game);
+            viewModel.Save();
             await Navigation.PopModalAsync();
         }
 
