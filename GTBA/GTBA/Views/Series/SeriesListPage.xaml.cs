@@ -1,6 +1,8 @@
 ﻿using GTBA.Models;
 using GTBA.ViewModels;
+using GTBA.ViewModels.Episodes;
 using GTBA.ViewModels.Series;
+using GTBA.Views.Episodes;
 using GTBA.Views.Series;
 using System;
 using System.Collections.ObjectModel;
@@ -38,7 +40,8 @@ namespace GTBA.Views
                 return;
 
             var serie = (Serie)e.Item;
-            await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
+            //await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
+            await Navigation.PushAsync(new EpisodesListPage(new EpisodesViewModel(serie)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

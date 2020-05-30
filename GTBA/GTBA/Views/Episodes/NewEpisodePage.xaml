@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GTBA.Views.Episodes.NewEpisodePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel"
+                     Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Save"
+                     Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="20"
+                     Padding="15">
+
+            <Label Text="Name"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Episode.EpisodeName}"
+                   Placeholder="Name of Episode"
+                   FontSize="Small" />
+
+            <Label Text="Season"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Episode.Season}"
+                   Placeholder="Number of season"
+                   FontSize="Small" />
+
+            <Label Text="Episode number"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Episode.EpisodeNr}"
+                   Placeholder="Number of episode"
+                   FontSize="Small" />
+
+            <Label Text="Length"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Episode.EpisodeLength}"
+                   Placeholder="length in minutes"
+                   FontSize="Small" />
+
+            <Label Text="Serie"
+                   FontSize="Medium" />
+            <Picker x:Name="SeriePicker"
+                    Title="Select a Serie"
+                    ItemsSource="{Binding Series}"
+                    ItemDisplayBinding="{Binding SerieName}"
+                    SelectedItem="{Binding SelectedSerie}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
