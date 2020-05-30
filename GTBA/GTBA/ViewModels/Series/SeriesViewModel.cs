@@ -43,7 +43,7 @@ namespace GTBA.ViewModels
                 IEnumerable<Serie> series;
                 if (franchise != null)
                 {
-                    series = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                    series = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
                 }
                 else
                 {

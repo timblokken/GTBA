@@ -45,7 +45,7 @@ namespace GTBA.ViewModels
                 IEnumerable<Movie> movies;
                 if (franchise != null)
                 {
-                    movies = await DataStore.GetItemsByFranhciseAsync(franchise.FranchiseId);
+                    movies = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
                 }
                 else
                 {

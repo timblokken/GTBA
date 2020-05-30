@@ -8,6 +8,6 @@ namespace GTBA.Services.Interfaces
 {
     public interface IMovieDataStore : IDataStore<Movie>
     {
-        Task<IEnumerable<Movie>> GetItemsByFranhciseAsync(int franId);
+        Task<IEnumerable<Movie>> GetItemsByFranchiseAsync(int franId);
     }
 }

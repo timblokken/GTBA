@@ -8,6 +8,6 @@ namespace GTBA.Services.Interfaces
 {
     public interface ISeriesDataStore : IDataStore<Serie>
     {
-        Task<IEnumerable<Serie>> GetItemsByFranhciseAsync(int franId);
+        Task<IEnumerable<Serie>> GetItemsByFranchiseAsync(int franId);
     }
 }
