@@ -28,6 +28,13 @@ namespace GTBA.ViewModels
                 await DataStore.AddItemAsync(serie);
                 await ExecuteLoadItemsCommand(franchise);
             });
+
+            MessagingCenter.Subscribe<SerieDetailViewModel, Serie>(this, "DeleteSerie", async (obj, serie) =>
+            {
+                Series.Remove(serie);
+                await DataStore.DeleteItemAsync(serie.SerieId);
+                await ExecuteLoadItemsCommand(franchise);
+            });
         }
 
         async Task ExecuteLoadItemsCommand(Franchise franchise = null)

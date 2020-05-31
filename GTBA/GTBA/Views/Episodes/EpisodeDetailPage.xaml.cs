@@ -31,5 +31,11 @@ namespace GTBA.Views.Episodes
         {
             await Navigation.PushModalAsync(new NavigationPage(new EditEpisodePage(new EditEpisodeViewModel(viewModel.Episode))));
         }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Delete();
+            await Navigation.PopModalAsync();
+        }
     }
 }

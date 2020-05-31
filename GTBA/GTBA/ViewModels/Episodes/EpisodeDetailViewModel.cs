@@ -23,5 +23,9 @@ namespace GTBA.ViewModels.Episodes
                 await DataStore.UpdateItemAsync(update);
             });
         }
+        public void Delete()
+        {
+            MessagingCenter.Send(this, "DeleteEpisode", Episode);
+        }
     }
 }

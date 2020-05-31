@@ -30,5 +30,11 @@ namespace GTBA.Views.Franchises
         {
             await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(new EditFranchiseViewModel(viewModel.Franchise))));
         }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Delete();
+            await Navigation.PopModalAsync();
+        }
     }
 }

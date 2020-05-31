@@ -13,6 +13,9 @@
         <ToolbarItem Text="Edit"
                      x:Name="EditBtn"
                      Clicked="EditBtn_Clicked" />
+        <ToolbarItem Text="Delete"
+                     x:Name="DeleteBtn"
+                     Clicked="DeleteBtn_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
