@@ -43,7 +43,7 @@ namespace GTBA.Models
         private bool seen = false;
         public bool Seen
         {
-            get { return seen = false; }
+            get { return seen; }
             set { SetProperty(ref seen, value); }
         }
 
