@@ -25,5 +25,10 @@ namespace GTBA.ViewModels.Games
                 await DataStore.UpdateItemAsync(update);
             });
         }
+
+        public void Delete()
+        {
+            MessagingCenter.Send(this, "DeleteGame", Game);
+        }
     }
 }

@@ -30,5 +30,11 @@ namespace GTBA.Views.Games
         {
             await Navigation.PushModalAsync(new NavigationPage(new EditGamePage(new EditGameViewModel(viewModel.Game))));
         }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Delete();
+            await Navigation.PopModalAsync();
+        }
     }
 }
