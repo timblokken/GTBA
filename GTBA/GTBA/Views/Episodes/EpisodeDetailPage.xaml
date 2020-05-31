@@ -39,6 +39,12 @@
             <Label Text="{Binding Episode.EpisodeLength}"
                    FontSize="Small" />
 
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Episode.Seen}" 
+                      IsEnabled="False"/>
+
             <Label Text="Serie:"
                    FontSize="Medium" />
             <Label Text="{Binding Episode.Serie.SerieName}"

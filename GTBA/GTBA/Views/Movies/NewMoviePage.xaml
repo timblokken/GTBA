@@ -26,6 +26,10 @@
                    x:Name="movieLength"
                    Placeholder="Length of movie in minutes"
                    FontSize="Small" />
+            <Label Text="Seen"
+                       FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Movie.Seen}" />
             <Label Text="Franchise"
                    FontSize="Medium" />
             <Picker x:Name="FranchisePicker"

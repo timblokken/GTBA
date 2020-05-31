@@ -34,7 +34,12 @@
             <Entry Text="{Binding Serie.NrOfEpisodes}"
                    Placeholder="Number of episodes"
                    FontSize="Small" />
-            
+
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Serie.Seen}" />
+
             <Label Text="Franchise"
                    FontSize="Medium" />
             <Picker x:Name="FranchisePicker"

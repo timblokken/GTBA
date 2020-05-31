@@ -30,6 +30,13 @@ namespace GTBA.ViewModels
                 await DataStore.AddItemAsync(movie);
                 await ExecuteLoadItemsCommand(franchise);
             });
+
+            MessagingCenter.Subscribe<MovieDetailViewModel, Movie>(this, "DeleteMovie", async (obj, movie) =>
+            {
+                Movies.Remove(movie);
+                await DataStore.DeleteItemAsync(movie.MovieId);
+                await ExecuteLoadItemsCommand(franchise);
+            });
         }
 
         async Task ExecuteLoadItemsCommand(Franchise franchise = null)

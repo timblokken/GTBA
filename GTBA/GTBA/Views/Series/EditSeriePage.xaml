@@ -31,7 +31,12 @@
                    FontSize="Medium" />
             <Entry Text="{Binding Serie.NrOfEpisodes}"
                    FontSize="Small" />
-            
+
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Serie.Seen}" />
+
             <Label Text="Franchise:"
                    FontSize="Medium" />
             <Entry Text="{Binding Serie.Franchise.FranchiseName}"

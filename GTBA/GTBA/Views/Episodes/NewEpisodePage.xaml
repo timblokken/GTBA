@@ -40,6 +40,11 @@
                    Placeholder="length in minutes"
                    FontSize="Small" />
 
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Episode.Seen}" />
+
             <Label Text="Serie"
                    FontSize="Medium" />
             <Picker x:Name="SeriePicker"
