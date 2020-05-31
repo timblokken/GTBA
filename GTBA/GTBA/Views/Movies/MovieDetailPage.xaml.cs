@@ -30,5 +30,11 @@ namespace GTBA.Views.Movies
         {
             await Navigation.PushModalAsync(new NavigationPage(new EditMoviePage(new EditMovieViewModel(viewModel.Movie))));
         }
+
+        private async void DeleteBtn_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Delete();
+            await Navigation.PopModalAsync();
+        }
     }
 }
