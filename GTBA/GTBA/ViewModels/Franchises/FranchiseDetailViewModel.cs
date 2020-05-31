@@ -27,6 +27,11 @@ namespace GTBA.ViewModels.Franchises
             });
         }
 
+        public void Delete()
+        {
+            MessagingCenter.Send(this, "DeleteFranchise", Franchise);
+        }
+
 
     }
 }

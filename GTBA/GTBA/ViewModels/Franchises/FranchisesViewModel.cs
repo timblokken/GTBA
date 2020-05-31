@@ -31,6 +31,12 @@ namespace GTBA.ViewModels
                 Franchises.Add(franchise);
                 await DataStore.AddItemAsync(franchise);
             });
+
+            MessagingCenter.Subscribe<FranchiseDetailViewModel, Franchise>(this, "DeleteFranchise", async (obj, franchise) =>
+            {
+                Franchises.Remove(franchise);
+                await DataStore.DeleteItemAsync(franchise.FranchiseId);
+            });
         }
 
         async Task ExecuteLoadItemsCommand()
