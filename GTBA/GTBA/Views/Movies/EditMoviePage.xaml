@@ -25,6 +25,10 @@
                    FontSize="Medium" />
             <Entry Text="{Binding Movie.MovieLength}"
                    FontSize="Small" />
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Movie.Seen}"/>
             <Label Text="Franchise:"
                    FontSize="Medium" />
             <Entry Text="{Binding Movie.Franchise.FranchiseName}"

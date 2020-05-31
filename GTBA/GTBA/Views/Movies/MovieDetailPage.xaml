@@ -30,6 +30,11 @@
                    FontSize="Medium" />
             <Label Text="{Binding Movie.MovieLength, StringFormat='{0} Minutes'}"
                    FontSize="Small" />
+            <Label Text="Seen"
+                   FontSize="Medium" />
+            <CheckBox x:Name="SeenCheck"
+                      IsChecked="{Binding Movie.Seen}"
+                      IsEnabled="False" />
             <Label Text="Franchise:"
                    FontSize="Medium" />
             <Label Text="{Binding Movie.Franchise.FranchiseName}"
