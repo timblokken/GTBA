@@ -16,7 +16,7 @@
         <ScrollView>
             <StackLayout Spacing="20"
                          Padding="15">
-                <Label Text="Name"
+                <Label Text="Name:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Franchise.FranchiseName}"
                        Placeholder="Name of franchise"

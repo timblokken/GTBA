@@ -18,25 +18,25 @@
             <StackLayout Spacing="20"
                          Padding="15">
 
-                <Label Text="Name"
+                <Label Text="Name:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Serie.SerieName}"
                        Placeholder="Name of serie"
                        FontSize="Small" />
 
-                <Label Text="Seasons"
+                <Label Text="Seasons:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Serie.Seasons}"
                        Placeholder="Number of seasons"
                        FontSize="Small" />
 
-                <Label Text="Episodes"
+                <Label Text="Episodes:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Serie.NrOfEpisodes}"
                        Placeholder="Number of episodes"
                        FontSize="Small" />
 
-                <Label Text="Seen"
+                <Label Text="Seen:"
                        FontSize="Medium" />
                 <CheckBox x:Name="SeenCheck"
                           IsChecked="{Binding Serie.Seen}" />
@@ -48,7 +48,7 @@
                         FontSize="Small"
                         AutoSize="TextChanges" />
 
-                <Label Text="Franchise"
+                <Label Text="Franchise:"
                        FontSize="Medium" />
                 <Picker x:Name="FranchisePicker"
                         Title="Select a Franchise"

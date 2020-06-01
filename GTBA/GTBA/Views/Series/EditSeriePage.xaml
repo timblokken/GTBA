@@ -23,17 +23,17 @@
                 <Entry Text="{Binding Serie.SerieName}"
                        FontSize="Small" />
 
-                <Label Text="Seasons"
+                <Label Text="Seasons:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Serie.Seasons}"
                        FontSize="Small" />
 
-                <Label Text="Episodes"
+                <Label Text="Episodes:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Serie.NrOfEpisodes}"
                        FontSize="Small" />
 
-                <Label Text="Seen"
+                <Label Text="Seen:"
                        FontSize="Medium" />
                 <CheckBox x:Name="SeenCheck"
                           IsChecked="{Binding Serie.Seen}" />

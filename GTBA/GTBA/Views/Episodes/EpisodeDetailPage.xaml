@@ -28,22 +28,22 @@
                 <Label Text="{Binding Episode.EpisodeName}"
                        FontSize="Small" />
 
-                <Label Text="Season"
+                <Label Text="Season:"
                        FontSize="Medium" />
                 <Label Text="{Binding Episode.Season}"
                        FontSize="Small" />
 
-                <Label Text="Number"
+                <Label Text="Episode Number:"
                        FontSize="Medium" />
                 <Label Text="{Binding Episode.EpisodeNr}"
                        FontSize="Small" />
 
-                <Label Text="Length"
+                <Label Text="Length:"
                        FontSize="Medium" />
                 <Label Text="{Binding Episode.EpisodeLength}"
                        FontSize="Small" />
 
-                <Label Text="Seen"
+                <Label Text="Seen:"
                        FontSize="Medium" />
                 <CheckBox x:Name="SeenCheck"
                           IsChecked="{Binding Episode.Seen}"

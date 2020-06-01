@@ -16,7 +16,7 @@
         <ScrollView>
             <StackLayout Spacing="20"
                          Padding="15">
-                <Label Text="Name"
+                <Label Text="Name:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Game.GameName}"
                        Placeholder="Name of game"
@@ -29,7 +29,7 @@
                         FontSize="Small"
                         AutoSize="TextChanges" />
 
-                <Label Text="Franchise"
+                <Label Text="Franchise:"
                        FontSize="Medium" />
                 <Picker x:Name="FranchisePicker"
                         Title="Select a Franchise"

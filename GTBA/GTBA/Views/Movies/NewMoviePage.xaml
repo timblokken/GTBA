@@ -16,13 +16,13 @@
         <ScrollView>
             <StackLayout Spacing="20"
                          Padding="15">
-                <Label Text="Name"
+                <Label Text="Name:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Movie.MovieName}"
                        Placeholder="Name of Movie"
                        FontSize="Small" />
 
-                <Label Text="length"
+                <Label Text="length:"
                        FontSize="Medium" />
                 <Entry Text="{Binding Movie.MovieLength}"
                        Placeholder="Length of movie in minutes"
@@ -40,7 +40,7 @@
                         FontSize="Small"
                         AutoSize="TextChanges" />
 
-                <Label Text="Franchise"
+                <Label Text="Franchise:"
                        FontSize="Medium" />
                 <Picker x:Name="FranchisePicker"
                         Title="Select a Franchise"
