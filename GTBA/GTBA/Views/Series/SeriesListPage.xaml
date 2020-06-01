@@ -7,32 +7,34 @@
              x:Class="GTBA.Views.SeriesListPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <Button Text="Add new Serie"
-                x:Name="AddSerieBtn"
-                Clicked="AddSerieBtn_Clicked" />
-        <ListView x:Name="SeriesListView"
-                  ItemsSource="{Binding Series}"
-                  ItemTapped="Handle_ItemTapped"
-                  RefreshCommand="{Binding LoadItemsCommand}"
-                  IsPullToRefreshEnabled="True"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                  CachingStrategy="RecycleElement">
+    <ScrollView>
+        <StackLayout>
+            <Button Text="Add new Serie"
+                    x:Name="AddSerieBtn"
+                    Clicked="AddSerieBtn_Clicked" />
+            <ListView x:Name="SeriesListView"
+                      ItemsSource="{Binding Series}"
+                      ItemTapped="Handle_ItemTapped"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement">
 
-            <!--Custom View Cells-->
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     VerticalOptions="Center"
-                                     HorizontalOptions="CenterAndExpand">
-                            <Label Text="{Binding SerieName}"
-                                   Style="{DynamicResource ListItemTextStyle}"
-                                   HorizontalOptions="CenterAndExpand" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                <!--Custom View Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding SerieName}"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

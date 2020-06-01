@@ -55,6 +55,13 @@ namespace GTBA.Models
             set { SetProperty(ref seen, value); }
         }
 
+        private string description = string.Empty;
+        public string Description
+        {
+            get { return description; }
+            set { SetProperty(ref description, value); }
+        }
+
         //id of the serie the episode is in
         //acts as foreign key
         private int serieId;

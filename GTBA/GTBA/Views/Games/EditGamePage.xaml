@@ -15,17 +15,27 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name:"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Game.GameName}"
-                   FontSize="Small" />
-            <Label Text="Franchise:"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Game.Franchise.FranchiseName}"
-                   FontSize="Small"
-                   IsEnabled="False" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Game.GameName}"
+                       FontSize="Small" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Game.Description}"
+                        Placeholder="Description of Game"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Game.Franchise.FranchiseName}"
+                       FontSize="Small"
+                       IsEnabled="False" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

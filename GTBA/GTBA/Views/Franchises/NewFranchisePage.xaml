@@ -13,13 +13,22 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Franchise.FranchiseName}"
-                   Placeholder="Name of franchise"
-                   FontSize="Small" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Franchise.FranchiseName}"
+                       Placeholder="Name of franchise"
+                       FontSize="Small" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Franchise.Description}"
+                        Placeholder="Description of Franchise"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

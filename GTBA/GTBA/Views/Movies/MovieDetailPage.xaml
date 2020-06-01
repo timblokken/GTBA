@@ -20,25 +20,37 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Movie.MovieName}"
-                   FontSize="Small" />
-            <Label Text="Length:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Movie.MovieLength, StringFormat='{0} Minutes'}"
-                   FontSize="Small" />
-            <Label Text="Seen"
-                   FontSize="Medium" />
-            <CheckBox x:Name="SeenCheck"
-                      IsChecked="{Binding Movie.Seen}"
-                      IsEnabled="False" />
-            <Label Text="Franchise:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Movie.Franchise.FranchiseName}"
-                   FontSize="Small" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Label Text="{Binding Movie.MovieName}"
+                       FontSize="Small" />
+
+                <Label Text="Length:"
+                       FontSize="Medium" />
+                <Label Text="{Binding Movie.MovieLength, StringFormat='{0} Minutes'}"
+                       FontSize="Small" />
+
+                <Label Text="Seen:"
+                       FontSize="Medium" />
+                <CheckBox x:Name="SeenCheck"
+                          IsChecked="{Binding Movie.Seen}"
+                          IsEnabled="False" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Movie.Description}"
+                        FontSize="Small"
+                        AutoSize="TextChanges"
+                        IsReadOnly="True" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Label Text="{Binding Movie.Franchise.FranchiseName}"
+                       FontSize="Small" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

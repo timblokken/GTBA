@@ -23,6 +23,13 @@ namespace GTBA.Models
             set { SetProperty(ref franchiseName, value); }
         }
 
+        private string description = string.Empty;
+        public string Description
+        {
+            get { return description; }
+            set { SetProperty(ref description, value); }
+        }
+
         public ICollection<Movie> Movies { get; set; }
         public ICollection<Serie> Series { get; set; }
         public ICollection<Game> Games { get; set; }

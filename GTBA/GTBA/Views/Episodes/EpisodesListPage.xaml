@@ -6,33 +6,35 @@
              mc:Ignorable="d"
              x:Class="GTBA.Views.Episodes.EpisodesListPage"
              Title="{Binding Title}">
-    
-    <StackLayout>
-        <Button Text="Add new Episode"
-                x:Name="AddEpiBtn"
-                Clicked="AddEpiBtn_Clicked" />
-        <ListView x:Name="GamesListView"
-                  ItemsSource="{Binding Episodes}"
-                  ItemTapped="Handle_ItemTapped"
-                  RefreshCommand="{Binding LoadItemsCommand}"
-                  IsPullToRefreshEnabled="True"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                  CachingStrategy="RecycleElement">
 
-            <!--Custom View Cells-->
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     VerticalOptions="Center"
-                                     HorizontalOptions="CenterAndExpand">
-                            <Label Text="{Binding EpisodeName}"
-                                   Style="{DynamicResource ListItemTextStyle}"
-                                   HorizontalOptions="CenterAndExpand" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Button Text="Add new Episode"
+                    x:Name="AddEpiBtn"
+                    Clicked="AddEpiBtn_Clicked" />
+            <ListView x:Name="GamesListView"
+                      ItemsSource="{Binding Episodes}"
+                      ItemTapped="Handle_ItemTapped"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement">
+
+                <!--Custom View Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding EpisodeName}"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

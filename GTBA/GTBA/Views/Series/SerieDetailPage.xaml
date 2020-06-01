@@ -19,33 +19,43 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Serie.SerieName}"
-                   FontSize="Small" />
-            
-            <Label Text="Seasons"
-                   FontSize="Medium" />
-            <Label Text="{Binding Serie.Seasons}"
-                   FontSize="Small" />
-            
-            <Label Text="Episodes"
-                   FontSize="Medium" />
-            <Label Text="{Binding Serie.NrOfEpisodes}"
-                   FontSize="Small" />
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Label Text="{Binding Serie.SerieName}"
+                       FontSize="Small" />
 
-            <Label Text="Seen"
-                   FontSize="Medium" />
-            <CheckBox x:Name="SeenCheck"
-                      IsChecked="{Binding Serie.Seen}"
-                      IsEnabled="False"/>
+                <Label Text="Seasons"
+                       FontSize="Medium" />
+                <Label Text="{Binding Serie.Seasons}"
+                       FontSize="Small" />
 
-            <Label Text="Franchise:"
-                   FontSize="Medium" />
-            <Label Text="{Binding Serie.Franchise.FranchiseName}"
-                   FontSize="Small" />
-        </StackLayout>
+                <Label Text="Episodes"
+                       FontSize="Medium" />
+                <Label Text="{Binding Serie.NrOfEpisodes}"
+                       FontSize="Small" />
+
+                <Label Text="Seen"
+                       FontSize="Medium" />
+                <CheckBox x:Name="SeenCheck"
+                          IsChecked="{Binding Serie.Seen}"
+                          IsEnabled="False" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Serie.Description}"
+                        Placeholder="Description of Serie"
+                        FontSize="Small"
+                        AutoSize="TextChanges"
+                        IsReadOnly="True" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Label Text="{Binding Serie.Franchise.FranchiseName}"
+                       FontSize="Small" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
