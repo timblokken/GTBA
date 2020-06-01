@@ -13,20 +13,30 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Game.GameName}"
-                   Placeholder="Name of game"
-                   FontSize="Small" />
-            <Label Text="Franchise"
-                   FontSize="Medium" />
-            <Picker x:Name="FranchisePicker"
-                    Title="Select a Franchise"
-                    ItemsSource="{Binding Franchises}"
-                    ItemDisplayBinding="{Binding FranchiseName}"
-                    SelectedItem="{Binding SelectedFranchise}" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Game.GameName}"
+                       Placeholder="Name of game"
+                       FontSize="Small" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Game.Description}"
+                        Placeholder="Description of Game"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Picker x:Name="FranchisePicker"
+                        Title="Select a Franchise"
+                        ItemsSource="{Binding Franchises}"
+                        ItemDisplayBinding="{Binding FranchiseName}"
+                        SelectedItem="{Binding SelectedFranchise}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

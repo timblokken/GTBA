@@ -15,39 +15,48 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
 
-            <Label Text="Name:"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Episode.EpisodeName}"
-                   FontSize="Small" />
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Episode.EpisodeName}"
+                       FontSize="Small" />
 
-            <Label Text="Seasons"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Episode.Season}"
-                   FontSize="Small" />
+                <Label Text="Seasons:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Episode.Season}"
+                       FontSize="Small" />
 
-            <Label Text="Episode Number"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Episode.EpisodeNr}"
-                   FontSize="Small" />
+                <Label Text="Episode Number:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Episode.EpisodeNr}"
+                       FontSize="Small" />
 
-            <Label Text="Length"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Episode.EpisodeLength}"
-                   FontSize="Small" />
+                <Label Text="Length:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Episode.EpisodeLength}"
+                       FontSize="Small" />
 
-            <Label Text="Seen"
-                   FontSize="Medium" />
-            <CheckBox x:Name="SeenCheck"
-                      IsChecked="{Binding Episode.Seen}" />
+                <Label Text="Seen:"
+                       FontSize="Medium" />
+                <CheckBox x:Name="SeenCheck"
+                          IsChecked="{Binding Episode.Seen}" />
 
-            <Label Text="Serie:"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Episode.Serie.SerieName}"
-                   FontSize="Small"
-                   IsEnabled="False" />
-        </StackLayout>
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Episode.Description}"
+                        Placeholder="Description of Episode"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+
+                <Label Text="Serie:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Episode.Serie.SerieName}"
+                       FontSize="Small"
+                       IsEnabled="False" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

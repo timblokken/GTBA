@@ -14,39 +14,48 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            
-            <Label Text="Name"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Serie.SerieName}"
-                   Placeholder="Name of serie"
-                   FontSize="Small" />
-            
-            <Label Text="Seasons"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Serie.Seasons}"
-                   Placeholder="Number of seasons"
-                   FontSize="Small" />
-            
-            <Label Text="Episodes"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Serie.NrOfEpisodes}"
-                   Placeholder="Number of episodes"
-                   FontSize="Small" />
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
 
-            <Label Text="Seen"
-                   FontSize="Medium" />
-            <CheckBox x:Name="SeenCheck"
-                      IsChecked="{Binding Serie.Seen}" />
+                <Label Text="Name:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Serie.SerieName}"
+                       Placeholder="Name of serie"
+                       FontSize="Small" />
 
-            <Label Text="Franchise"
-                   FontSize="Medium" />
-            <Picker x:Name="FranchisePicker"
-                    Title="Select a Franchise"
-                    ItemsSource="{Binding Franchises}"
-                    ItemDisplayBinding="{Binding FranchiseName}"
-                    SelectedItem="{Binding SelectedFranchise}" />
-        </StackLayout>
+                <Label Text="Seasons:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Serie.Seasons}"
+                       Placeholder="Number of seasons"
+                       FontSize="Small" />
+
+                <Label Text="Episodes:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Serie.NrOfEpisodes}"
+                       Placeholder="Number of episodes"
+                       FontSize="Small" />
+
+                <Label Text="Seen:"
+                       FontSize="Medium" />
+                <CheckBox x:Name="SeenCheck"
+                          IsChecked="{Binding Serie.Seen}" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Serie.Description}"
+                        Placeholder="Description of Serie"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Picker x:Name="FranchisePicker"
+                        Title="Select a Franchise"
+                        ItemsSource="{Binding Franchises}"
+                        ItemDisplayBinding="{Binding FranchiseName}"
+                        SelectedItem="{Binding SelectedFranchise}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -7,32 +7,33 @@
              x:Class="GTBA.Views.FranchiseListPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <Button Text="Add new franchise"
-                x:Name="AddFranchiseBtn"
-                Clicked="AddFranchiseBtn_Clicked"/>
-        <ListView x:Name="FranchisesListView"
-                  ItemsSource="{Binding Franchises}"
-                  ItemTapped="Handle_ItemTapped"
-                  RefreshCommand="{Binding LoadItemsCommand}"
-                  IsPullToRefreshEnabled="True"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                  CachingStrategy="RecycleElement">
+    <ScrollView>
+        <StackLayout>
+            <Button Text="Add new franchise"
+                    x:Name="AddFranchiseBtn"
+                    Clicked="AddFranchiseBtn_Clicked" />
+            <ListView x:Name="FranchisesListView"
+                      ItemsSource="{Binding Franchises}"
+                      ItemTapped="Handle_ItemTapped"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement">
 
-            <!--Custom View Cells-->
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     VerticalOptions="Center"
-                                     HorizontalOptions="CenterAndExpand">
-                            <Label Text="{Binding FranchiseName}"
-                                   Style="{DynamicResource ListItemTextStyle}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-    
+                <!--Custom View Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding FranchiseName}"
+                                       Style="{DynamicResource ListItemTextStyle}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

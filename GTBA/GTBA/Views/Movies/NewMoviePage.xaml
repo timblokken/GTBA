@@ -13,30 +13,41 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20"
-                     Padding="15">
-            <Label Text="Name"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Movie.MovieName}"
-                   Placeholder="Name of Movie"
-                   FontSize="Small" />
-            <Label Text="length"
-                   FontSize="Medium" />
-            <Entry Text="{Binding Movie.MovieLength}"
-                   x:Name="movieLength"
-                   Placeholder="Length of movie in minutes"
-                   FontSize="Small" />
-            <Label Text="Seen"
+        <ScrollView>
+            <StackLayout Spacing="20"
+                         Padding="15">
+                <Label Text="Name:"
                        FontSize="Medium" />
-            <CheckBox x:Name="SeenCheck"
-                      IsChecked="{Binding Movie.Seen}" />
-            <Label Text="Franchise"
-                   FontSize="Medium" />
-            <Picker x:Name="FranchisePicker"
-                    Title="Select a Franchise"
-                    ItemsSource="{Binding Franchises}"
-                    ItemDisplayBinding="{Binding FranchiseName}"
-                    SelectedItem="{Binding SelectedFranchise}" />
-        </StackLayout>
+                <Entry Text="{Binding Movie.MovieName}"
+                       Placeholder="Name of Movie"
+                       FontSize="Small" />
+
+                <Label Text="length:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Movie.MovieLength}"
+                       Placeholder="Length of movie in minutes"
+                       FontSize="Small" />
+
+                <Label Text="Seen:"
+                       FontSize="Medium" />
+                <CheckBox x:Name="SeenCheck"
+                          IsChecked="{Binding Movie.Seen}" />
+
+                <Label Text="Description:"
+                       FontSize="Medium" />
+                <Editor Text="{Binding Movie.Description}"
+                        Placeholder="Description of Movie"
+                        FontSize="Small"
+                        AutoSize="TextChanges" />
+
+                <Label Text="Franchise:"
+                       FontSize="Medium" />
+                <Picker x:Name="FranchisePicker"
+                        Title="Select a Franchise"
+                        ItemsSource="{Binding Franchises}"
+                        ItemDisplayBinding="{Binding FranchiseName}"
+                        SelectedItem="{Binding SelectedFranchise}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

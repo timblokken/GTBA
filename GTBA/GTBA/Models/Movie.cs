@@ -39,6 +39,13 @@ namespace GTBA.Models
             set { SetProperty(ref seen, value); }
         }
 
+        private string description = string.Empty;
+        public string Description
+        {
+            get { return description; }
+            set { SetProperty(ref description, value); }
+        }
+
         //id of the franchise the movie is in
         //foreign key
         private int franchiseId;
