@@ -36,6 +36,12 @@
                        Placeholder="Number of episodes"
                        FontSize="Small" />
 
+                <Label Text="Length of episode:"
+                       FontSize="Medium" />
+                <Entry Text="{Binding Serie.EpisodeLength}"
+                       Placeholder="length of an episode in minutes"
+                       FontSize="Small" />
+
                 <Label Text="Seen:"
                        FontSize="Medium" />
                 <CheckBox x:Name="SeenCheck"
