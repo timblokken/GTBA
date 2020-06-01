@@ -39,6 +39,14 @@ namespace GTBA.Models
             set { SetProperty(ref nrOfEpisodes, value); }
         }
 
+        //length of episode in minutes
+        private int? episodeLength;
+        public int? EpisodeLength
+        {
+            get { return episodeLength; }
+            set { SetProperty(ref episodeLength, value); }
+        }
+
         //have you seen the movie or not
         private bool seen = false;
         public bool Seen
