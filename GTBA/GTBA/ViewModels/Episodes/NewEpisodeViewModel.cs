@@ -15,11 +15,17 @@ namespace GTBA.ViewModels.Episodes
         public ObservableCollection<Serie> Series { get; set; }
         private Serie selectedSerie;
 
-        public NewEpisodeViewModel()
+        public NewEpisodeViewModel(Serie serie = null)
         {
             Episode = new Episode();
             Series = new ObservableCollection<Serie>();
+
+            if (serie != null)
+            {
+                selectedSerie = serie;
+            }
             GetSeries();
+
         }
 
         public Serie SelectedSerie

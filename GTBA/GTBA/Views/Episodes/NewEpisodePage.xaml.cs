@@ -1,4 +1,5 @@
-﻿using GTBA.ViewModels.Episodes;
+﻿using GTBA.Models;
+using GTBA.ViewModels.Episodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,16 @@ namespace GTBA.Views.Episodes
     public partial class NewEpisodePage : ContentPage
     {
         NewEpisodeViewModel viewModel;
-        public NewEpisodePage()
+        public NewEpisodePage(Serie serie = null)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new NewEpisodeViewModel();
+            BindingContext = viewModel = new NewEpisodeViewModel(serie);
+
+            if (serie != null)
+            {
+                SeriePicker.IsEnabled = false;
+            }
         }
 
         async void Save_Clicked(object sender, EventArgs e)
