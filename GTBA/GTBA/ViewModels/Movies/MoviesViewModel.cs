@@ -18,9 +18,12 @@ namespace GTBA.ViewModels
         public IMovieDataStore DataStore => DependencyService.Get<IMovieDataStore>();
         public ObservableCollection<Movie> Movies { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Franchise franchise;
+
         public MoviesViewModel(Franchise franchise = null)
         {
             Title = franchise != null ? "Movies" : "GTBA";
+            this.franchise = franchise;
             Movies = new ObservableCollection<Movie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
 

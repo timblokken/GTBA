@@ -46,7 +46,7 @@ namespace GTBA.Views
 
         private async void AddMovieBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewMoviePage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewMoviePage(viewModel.franchise)));
         }
 
         protected override void OnAppearing()
