@@ -46,7 +46,7 @@ namespace GTBA.Views
 
         async void AddGameBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewGamePage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewGamePage(viewModel.franchise)));
         }
         protected override void OnAppearing()
         {

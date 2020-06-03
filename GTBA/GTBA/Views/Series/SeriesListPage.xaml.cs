@@ -49,7 +49,7 @@ namespace GTBA.Views
 
         async void AddSerieBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewSeriePage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewSeriePage(viewModel.franchise)));
         }
 
         protected override void OnAppearing()

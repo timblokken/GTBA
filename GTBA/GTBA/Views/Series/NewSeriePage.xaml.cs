@@ -1,4 +1,5 @@
-﻿using GTBA.ViewModels.Series;
+﻿using GTBA.Models;
+using GTBA.ViewModels.Series;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,16 @@ namespace GTBA.Views.Series
     {
         NewSerieViewModel viewModel;
 
-        public NewSeriePage()
+        public NewSeriePage(Franchise franchise = null)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new NewSerieViewModel();
+            BindingContext = viewModel = new NewSerieViewModel(franchise);
+
+            if (franchise != null)
+            {
+                FranchisePicker.IsEnabled = false;
+            }
         }
 
         async void Save_Clicked(object sender, EventArgs e)

@@ -16,11 +16,16 @@ namespace GTBA.ViewModels.Games
         public ObservableCollection<Franchise> Franchises { get; set; }
         private Franchise selectedFranchise;
 
-        public NewGameViewModel()
+        public NewGameViewModel(Franchise franchise = null)
         {
             Game = new Game();
 
             Franchises = new ObservableCollection<Franchise>();
+
+            if (franchise != null)
+            {
+                SelectedFranchise = franchise;
+            }
 
             GetFranchises();
         }

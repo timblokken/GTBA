@@ -15,11 +15,16 @@ namespace GTBA.Views.Games
     public partial class NewGamePage : ContentPage
     {
         NewGameViewModel viewModel;
-        public NewGamePage()
+        public NewGamePage(Franchise franchise = null)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new NewGameViewModel();
+            BindingContext = viewModel = new NewGameViewModel(franchise);
+
+            if (franchise != null)
+            {
+                FranchisePicker.IsEnabled = false;
+            }
         }
 
         async void Save_Clicked(object sender, EventArgs e)

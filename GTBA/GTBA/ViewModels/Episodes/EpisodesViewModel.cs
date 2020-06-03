@@ -15,9 +15,11 @@ namespace GTBA.ViewModels.Episodes
         public IEpisodeDataStore DataStore => DependencyService.Get<IEpisodeDataStore>();
         public ObservableCollection<Episode> Episodes { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Serie serie; 
         public EpisodesViewModel(Serie serie = null)
         {
             Title = serie != null ? serie.SerieName : "Episodes";
+            this.serie = serie;
             Episodes = new ObservableCollection<Episode>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(serie));
 

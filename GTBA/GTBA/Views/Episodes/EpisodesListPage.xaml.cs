@@ -43,7 +43,7 @@ namespace GTBA.Views.Episodes
 
         async void AddEpiBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewEpisodePage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewEpisodePage(viewModel.serie)));
         }
         protected override void OnAppearing()
         {

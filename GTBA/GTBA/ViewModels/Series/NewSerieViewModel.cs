@@ -16,10 +16,15 @@ namespace GTBA.ViewModels.Series
         public ObservableCollection<Franchise> Franchises { get; set; }
         private Franchise selectedFranchise;
 
-        public NewSerieViewModel()
+        public NewSerieViewModel(Franchise franchise = null)
         {
             Serie = new Serie();
             Franchises = new ObservableCollection<Franchise>();
+
+            if (franchise != null)
+            {
+                SelectedFranchise = franchise;
+            }
 
             GetFranchises();
         }

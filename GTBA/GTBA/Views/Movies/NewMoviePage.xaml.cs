@@ -19,11 +19,16 @@ namespace GTBA.Views.Movies
 
         NewMovieViewModel viewModel;
         
-        public NewMoviePage()
+        public NewMoviePage(Franchise franchise = null)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new NewMovieViewModel();
+            BindingContext = viewModel = new NewMovieViewModel(franchise);
+
+            if (franchise != null)
+            {
+                FranchisePicker.IsEnabled = false;
+            }
         }
 
         async void Save_Clicked(object sender, EventArgs e)
