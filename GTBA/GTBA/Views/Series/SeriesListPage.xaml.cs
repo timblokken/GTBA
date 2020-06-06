@@ -41,7 +41,6 @@ namespace GTBA.Views
 
             var serie = (Serie)e.Item;
             await Navigation.PushAsync(new EpisodesListPage(new EpisodesViewModel(serie)));
-            //await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(serie))));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -58,6 +57,35 @@ namespace GTBA.Views
 
             if (viewModel.Series.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async void editMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Serie)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EditSeriePage(new EditSerieViewModel(contextItem))));
+        }
+
+        private async void detailsMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Serie)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new SerieDetailPage(new SerieDetailViewModel(contextItem))));
+        }
+
+        private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Serie)menuItem.BindingContext;
+            await viewModel.DeleteSerie(contextItem);
+        }
+
+        private async void seenMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Serie)menuItem.BindingContext;
+            contextItem.Seen = !contextItem.Seen;
+            await viewModel.UpdateSerie(contextItem);
         }
     }
 }

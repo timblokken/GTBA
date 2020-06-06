@@ -20,7 +20,7 @@ namespace GTBA.ViewModels
 
         public SeriesViewModel(Franchise franchise = null)
         {
-            Title = franchise != null ? "Series" : "GTBA";
+            Title = "Series";
             this.franchise = franchise;
             Series = new ObservableCollection<Serie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
@@ -38,6 +38,18 @@ namespace GTBA.ViewModels
                 await DataStore.DeleteItemAsync(serie.SerieId);
                 await ExecuteLoadItemsCommand(franchise);
             });
+        }
+
+        public async Task DeleteSerie(Serie serie)
+        {
+            Series.Remove(serie);
+            await DataStore.DeleteItemAsync(serie.SerieId);
+            await ExecuteLoadItemsCommand(franchise);
+        }
+
+        public async Task UpdateSerie(Serie serie)
+        {
+            await DataStore.UpdateItemAsync(serie);
         }
 
         async Task ExecuteLoadItemsCommand(Franchise franchise = null)

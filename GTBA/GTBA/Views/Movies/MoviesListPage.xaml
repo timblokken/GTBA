@@ -23,8 +23,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" 
-                                         >
+                            <StackLayout Orientation="Horizontal" >
                                 <Label Text="{Binding MovieName}"
                                        Style="{DynamicResource ListItemTextStyle}"
                                        HorizontalOptions="CenterAndExpand" 
