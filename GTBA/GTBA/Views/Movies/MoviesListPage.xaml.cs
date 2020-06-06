@@ -77,5 +77,13 @@ namespace GTBA.Views
             var contextItem = (Movie)menuItem.BindingContext;
             await viewModel.DeleteMovie(contextItem);
         }
+
+        private async void seenMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Movie)menuItem.BindingContext;
+            contextItem.Seen = !contextItem.Seen;
+            await viewModel.UpdateMovie(contextItem);
+        }
     }
 }

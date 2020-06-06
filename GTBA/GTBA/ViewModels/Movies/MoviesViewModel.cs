@@ -47,6 +47,11 @@ namespace GTBA.ViewModels
             await ExecuteLoadItemsCommand(franchise);
         }
 
+        public async Task UpdateMovie(Movie movie)
+        {
+            await DataStore.UpdateItemAsync(movie);
+        }
+
         async Task ExecuteLoadItemsCommand(Franchise franchise = null)
         {
             if (IsBusy)
