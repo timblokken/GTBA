@@ -55,5 +55,26 @@ namespace GTBA.Views
             if (viewModel.Games.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private async void editMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Game)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EditGamePage(new EditGameViewModel(contextItem))));
+        }
+
+        private async void detailsMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Game)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new GameDetailPage(new GameDetailViewModel(contextItem))));
+        }
+
+        private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Game)menuItem.BindingContext;
+            await viewModel.DeleteGame(contextItem);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace GTBA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FranchiseListPage : ContentPage
     {
-        
+
         FranchisesViewModel viewModel;
 
         public FranchiseListPage()
@@ -33,8 +33,7 @@ namespace GTBA.Views
                 return;
 
             var franchise = (Franchise)e.Item;
-            await Navigation.PushAsync((new FranchiseTabbedPage(new FranchiseTabbedViewModel(franchise))));
-            //await Navigation.PushModalAsync(new NavigationPage(new FranchiseDetailPage(new FranchiseDetailViewModel(franchise))));
+            await Navigation.PushAsync(new FranchiseTabbedPage(new FranchiseTabbedViewModel(franchise)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -51,6 +50,27 @@ namespace GTBA.Views
 
             if (viewModel.Franchises.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async void editMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Franchise)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EditFranchisePage(new EditFranchiseViewModel(contextItem))));
+        }
+
+        private async void detailsMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Franchise)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new FranchiseDetailPage(new FranchiseDetailViewModel(contextItem))));
+        }
+
+        private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Franchise)menuItem.BindingContext;
+            await viewModel.DeleteFranchise(contextItem);
         }
     }
 }

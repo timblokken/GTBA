@@ -33,10 +33,15 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<GameDetailViewModel, Game>(this, "DeleteGame", async (obj, game) =>
             {
-                Games.Remove(game);
-                await DataStore.DeleteItemAsync(game.GameId);
-                await ExecuteLoadItemsCommand(franchise);
+                await DeleteGame(game);
             });
+        }
+
+        public async Task DeleteGame(Game game)
+        {
+            Games.Remove(game);
+            await DataStore.DeleteItemAsync(game.GameId);
+            await ExecuteLoadItemsCommand(franchise);
         }
 
         async Task ExecuteLoadItemsCommand(Franchise franchise = null)

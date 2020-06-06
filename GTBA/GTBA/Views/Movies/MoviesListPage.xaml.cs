@@ -56,5 +56,34 @@ namespace GTBA.Views
             if (viewModel.Movies.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private async void editMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Movie)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EditMoviePage(new EditMovieViewModel(contextItem))));
+        }
+
+        private async void detailsMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Movie)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new MovieDetailPage(new MovieDetailViewModel(contextItem))));
+        }
+
+        private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Movie)menuItem.BindingContext;
+            await viewModel.DeleteMovie(contextItem);
+        }
+
+        private async void seenMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Movie)menuItem.BindingContext;
+            contextItem.Seen = !contextItem.Seen;
+            await viewModel.UpdateMovie(contextItem);
+        }
     }
 }

@@ -23,13 +23,32 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal"
-                                         VerticalOptions="Center"
-                                         HorizontalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Horizontal" >
                                 <Label Text="{Binding MovieName}"
                                        Style="{DynamicResource ListItemTextStyle}"
-                                       HorizontalOptions="CenterAndExpand" />
+                                       HorizontalOptions="CenterAndExpand" 
+                                       VerticalOptions="Center"
+                                       Margin="46,0,0,0"/>
+                                <Image Source="checkmark.png" 
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Start"
+                                       Margin="0,0,10,0"
+                                       Opacity="{Binding Seen}" />
                             </StackLayout>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Mark as seen" 
+                                          x:Name="seenMenuItem"
+                                          Clicked="seenMenuItem_Clicked"/>
+                                <MenuItem Text="Details" 
+                                          x:Name="detailsMenuItem"
+                                          Clicked="detailsMenuItem_Clicked"/>
+                                <MenuItem Text="Edit" 
+                                          x:Name="editMenuItem"
+                                          Clicked="editMenuItem_Clicked"/>
+                                <MenuItem Text="Delete" 
+                                          x:Name="DeleteMenuItem"
+                                          Clicked="DeleteMenuItem_Clicked"/>
+                            </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

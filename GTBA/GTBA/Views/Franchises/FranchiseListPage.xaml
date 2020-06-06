@@ -30,6 +30,17 @@
                                 <Label Text="{Binding FranchiseName}"
                                        Style="{DynamicResource ListItemTextStyle}" />
                             </StackLayout>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Details" 
+                                          x:Name="detailsMenuItem"
+                                          Clicked="detailsMenuItem_Clicked"/>
+                                <MenuItem Text="Edit" 
+                                          x:Name="editMenuItem"
+                                          Clicked="editMenuItem_Clicked"/>
+                                <MenuItem Text="Delete" 
+                                          x:Name="DeleteMenuItem"
+                                          Clicked="DeleteMenuItem_Clicked"/>
+                            </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
