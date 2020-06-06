@@ -52,5 +52,34 @@ namespace GTBA.Views.Episodes
             if (viewModel.Episodes.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
+
+        private async void editMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Episode)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EditEpisodePage(new EditEpisodeViewModel(contextItem))));
+        }
+
+        private async void detailsMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Episode)menuItem.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new EpisodeDetailPage(new EpisodeDetailViewModel(contextItem))));
+        }
+
+        private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Episode)menuItem.BindingContext;
+            await viewModel.DeleteEpisode(contextItem);
+        }
+
+        private async void seenMenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = sender as MenuItem;
+            var contextItem = (Episode)menuItem.BindingContext;
+            contextItem.Seen = !contextItem.Seen;
+            await viewModel.UpdateEpisode(contextItem);
+        }
     }
 }
