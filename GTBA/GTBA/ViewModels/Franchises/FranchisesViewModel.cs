@@ -34,9 +34,14 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<FranchiseDetailViewModel, Franchise>(this, "DeleteFranchise", async (obj, franchise) =>
             {
-                Franchises.Remove(franchise);
-                await DataStore.DeleteItemAsync(franchise.FranchiseId);
+                await DeleteFranchise(franchise);
             });
+        }
+
+        public async Task DeleteFranchise(Franchise franchise)
+        {
+            Franchises.Remove(franchise);
+            await DataStore.DeleteItemAsync(franchise.FranchiseId);
         }
 
         async Task ExecuteLoadItemsCommand()
