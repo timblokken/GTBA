@@ -23,6 +23,7 @@ namespace GTBA.ViewModels
             this.franchise = franchise;
             Games = new ObservableCollection<Game>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
+            SortCommand = new Command(async (parameter) => await ExecuteLoadItemsCommand(franchise, (string)parameter));
 
             MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddGame", async (obj, game) =>
             {
@@ -44,7 +45,7 @@ namespace GTBA.ViewModels
             await ExecuteLoadItemsCommand(franchise);
         }
 
-        async Task ExecuteLoadItemsCommand(Franchise franchise = null)
+        async Task ExecuteLoadItemsCommand(Franchise franchise = null, string sorter = null)
         {
             if (IsBusy)
                 return;
@@ -57,11 +58,11 @@ namespace GTBA.ViewModels
                 IEnumerable<Game> games;
                 if (franchise != null)
                 {
-                    games = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
+                    games = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId, sorter);
                 }
                 else
                 {
-                    games = await DataStore.GetItemsAsync(true);
+                    games = await DataStore.GetItemsAsync(true, sorter);
                 }
 
                 foreach (var game in games)
