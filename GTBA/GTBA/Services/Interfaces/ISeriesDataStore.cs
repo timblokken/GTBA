@@ -1,4 +1,5 @@
 ﻿using GTBA.Models;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace GTBA.Services.Interfaces
 {
     public interface ISeriesDataStore : IDataStore<Serie>
     {
-        Task<IEnumerable<Serie>> GetItemsByFranchiseAsync(int franId);
+        Task<IEnumerable<Serie>> GetItemsByFranchiseAsync(int franId, string sorter = null);
+        Task<IEnumerable<Serie>> Sort(string sorter, IIncludableQueryable<Serie, Franchise> series);
     }
 }
