@@ -7,6 +7,59 @@
              x:Class="GTBA.Views.SeriesListPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A-Z"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="AZ"
+                     Order="Secondary"
+                     Priority="1"/>
+        <ToolbarItem Text="Z-A"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="ZA"
+                     Order="Secondary"
+                     Priority="2"/>
+        <ToolbarItem Text="Shortest Episodes"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="ShortEps"
+                     Order="Secondary"
+                     Priority="3"/>
+        <ToolbarItem Text="Longest Episodes"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="LongEps"
+                     Order="Secondary"
+                     Priority="4"/>
+        <ToolbarItem Text="Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Seen"
+                     Order="Secondary"
+                     Priority="5"/>
+        <ToolbarItem Text="Not Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="NotSeen"
+                     Order="Secondary"
+                     Priority="6"/>
+        <ToolbarItem Text="Most Seasons"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="MostSeasons"
+                     Order="Secondary"
+                     Priority="7"/>
+        <ToolbarItem Text="Least Seasons"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="LeastSeasons"
+                     Order="Secondary"
+                     Priority="8"/>
+        <ToolbarItem Text="Most Episodes"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="MostEps"
+                     Order="Secondary"
+                     Priority="9"/>
+        <ToolbarItem Text="Least Episodes"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="LeastEps"
+                     Order="Secondary"
+                     Priority="10"/>
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
             <Button Text="Add new Serie"

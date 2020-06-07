@@ -7,6 +7,39 @@
              x:Class="GTBA.Views.Episodes.EpisodesListPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A-Z"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="AZ"
+                     Order="Secondary"
+                     Priority="1"/>
+        <ToolbarItem Text="Z-A"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="ZA"
+                     Order="Secondary"
+                     Priority="2"/>
+        <ToolbarItem Text="Newest"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Newest"
+                     Order="Secondary"
+                     Priority="3"/>
+        <ToolbarItem Text="Oldest"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Oldest"
+                     Order="Secondary"
+                     Priority="4"/>
+        <ToolbarItem Text="Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Seen"
+                     Order="Secondary"
+                     Priority="5"/>
+        <ToolbarItem Text="Not Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="NotSeen"
+                     Order="Secondary"
+                     Priority="6"/>
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
             <Button Text="Add new Episode"

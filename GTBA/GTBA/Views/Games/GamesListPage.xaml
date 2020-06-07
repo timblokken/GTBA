@@ -7,6 +7,19 @@
              x:Class="GTBA.Views.GamesListPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A-Z"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="AZ"
+                     Order="Secondary"
+                     Priority="1"/>
+        <ToolbarItem Text="Z-A"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="ZA"
+                     Order="Secondary"
+                     Priority="2"/>
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
             <Button Text="Add new game"

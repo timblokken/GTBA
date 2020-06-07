@@ -13,6 +13,7 @@ namespace GTBA.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        #region Properties
         bool isBusy = false;
         public bool IsBusy
         {
@@ -27,6 +28,10 @@ namespace GTBA.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        public Command SortCommand { get; set; }
+        #endregion
+
+        #region SetProperty
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
@@ -39,6 +44,7 @@ namespace GTBA.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
+        #endregion
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
