@@ -22,6 +22,7 @@ namespace GTBA.ViewModels.Episodes
             this.serie = serie;
             Episodes = new ObservableCollection<Episode>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(serie));
+            SortCommand = new Command(async (parameter) => await ExecuteLoadItemsCommand(serie, (string)parameter));
 
             MessagingCenter.Subscribe<NewEpisodeViewModel, Episode>(this, "AddEpisode", async (obj, episode) =>
             {
@@ -48,7 +49,7 @@ namespace GTBA.ViewModels.Episodes
             await DataStore.UpdateItemAsync(episode);
         }
 
-        async Task ExecuteLoadItemsCommand(Serie serie = null)
+        async Task ExecuteLoadItemsCommand(Serie serie = null, string sorter = null)
         {
             if (IsBusy)
                 return;
@@ -61,11 +62,11 @@ namespace GTBA.ViewModels.Episodes
                 IEnumerable<Episode> episodes;
                 if (serie != null)
                 {
-                    episodes = await DataStore.GetItemsBySerieAsync(serie.SerieId);
+                    episodes = await DataStore.GetItemsBySerieAsync(serie.SerieId, sorter);
                 }
                 else
                 {
-                    episodes = await DataStore.GetItemsAsync(true);
+                    episodes = await DataStore.GetItemsAsync(true, sorter);
                 }
 
                 foreach (var episode in episodes)
