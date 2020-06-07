@@ -7,6 +7,16 @@
              x:Class="GTBA.Views.FranchiseListPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A-Z"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="AZ"
+                     Order="Secondary"/>
+        <ToolbarItem Text="ZA"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Z-A"
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout>
             <Button Text="Add new franchise"

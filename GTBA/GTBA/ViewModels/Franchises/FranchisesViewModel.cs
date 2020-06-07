@@ -25,6 +25,7 @@ namespace GTBA.ViewModels
             Title = "GTBA";
             Franchises = new ObservableCollection<Franchise>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            SortCommand = new Command(async (parameter) => await ExecuteLoadItemsCommand((string)parameter));
 
             MessagingCenter.Subscribe<NewFranchiseViewModel, Franchise>(this, "AddFranchise", async (obj, franchise) =>
             {
@@ -44,7 +45,7 @@ namespace GTBA.ViewModels
             await DataStore.DeleteItemAsync(franchise.FranchiseId);
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadItemsCommand(string sorter = null)
         {
             if (IsBusy)
                 return;
@@ -54,7 +55,7 @@ namespace GTBA.ViewModels
             try
             {
                 Franchises.Clear();
-                var franchises = await DataStore.GetItemsAsync(true);
+                var franchises = await DataStore.GetItemsAsync(true,sorter);
                 foreach (var franchise in franchises)
                 {
                     Franchises.Add(franchise);
@@ -69,6 +70,5 @@ namespace GTBA.ViewModels
                 IsBusy = false;
             }
         }
-
     }
 }
