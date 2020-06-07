@@ -22,7 +22,7 @@ namespace GTBA.Services.DataStores
             return series;
         }
 
-        public override async Task<IEnumerable<Serie>> GetItemsAsync(bool forceRefresh = false)
+        public override async Task<IEnumerable<Serie>> GetItemsAsync(bool forceRefresh = false, string sorter = null)
         {
             var series = table.Include(s => s.Franchise);
             return await series.ToListAsync();

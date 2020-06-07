@@ -21,7 +21,7 @@ namespace GTBA.Services.DataStores
             return await table.Where(f => f.FranchiseId == franId).Include(g => g.Franchise).ToListAsync();
         }
 
-        public override async Task<IEnumerable<Game>> GetItemsAsync(bool forceRefresh = false)
+        public override async Task<IEnumerable<Game>> GetItemsAsync(bool forceRefresh = false, string sorter = null)
         {
             var games = table.Include(g => g.Franchise);
             return await games.ToListAsync();
