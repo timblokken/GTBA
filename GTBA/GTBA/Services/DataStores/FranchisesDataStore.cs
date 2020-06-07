@@ -34,9 +34,6 @@ namespace GTBA.Services.DataStores
                 default:
                     return await table.ToListAsync();
             }
-
-
         }
-
     }
 }

@@ -26,6 +26,7 @@ namespace GTBA.ViewModels
             this.franchise = franchise;
             Movies = new ObservableCollection<Movie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
+            SortCommand = new Command(async (parameter) => await ExecuteLoadItemsCommand(franchise,(string)parameter));
 
             MessagingCenter.Subscribe<NewMovieViewModel, Movie>(this, "AddMovie", async (obj, movie) =>
             {
@@ -52,7 +53,7 @@ namespace GTBA.ViewModels
             await DataStore.UpdateItemAsync(movie);
         }
 
-        async Task ExecuteLoadItemsCommand(Franchise franchise = null)
+        async Task ExecuteLoadItemsCommand(Franchise franchise = null, string sorter = null)
         {
             if (IsBusy)
                 return;
@@ -65,11 +66,11 @@ namespace GTBA.ViewModels
                 IEnumerable<Movie> movies;
                 if (franchise != null)
                 {
-                    movies = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId);
+                    movies = await DataStore.GetItemsByFranchiseAsync(franchise.FranchiseId,sorter);
                 }
                 else
                 {
-                    movies = await DataStore.GetItemsAsync(true);
+                    movies = await DataStore.GetItemsAsync(true,sorter);
                 }
                 foreach (var movie in movies)
                 {

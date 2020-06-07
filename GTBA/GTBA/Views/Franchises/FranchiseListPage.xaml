@@ -10,12 +10,12 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="A-Z"
                      Command="{Binding SortCommand}"
-                     CommandParameter="A-Z"
+                     CommandParameter="AZ"
                      Order="Secondary"
                      Priority="1"/>
-        <ToolbarItem Text="ZA"
+        <ToolbarItem Text="Z-A"
                      Command="{Binding SortCommand}"
-                     CommandParameter="Z-A"
+                     CommandParameter="ZA"
                      Order="Secondary"
                      Priority="2"/>
     </ContentPage.ToolbarItems>

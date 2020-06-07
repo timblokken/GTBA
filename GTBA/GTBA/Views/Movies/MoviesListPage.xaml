@@ -6,6 +6,40 @@
              mc:Ignorable="d"
              x:Class="GTBA.Views.MoviesListPage"
              Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A-Z"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="AZ"
+                     Order="Secondary"
+                     Priority="1"/>
+        <ToolbarItem Text="Z-A"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="ZA"
+                     Order="Secondary"
+                     Priority="2"/>
+        <ToolbarItem Text="Shortest"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Shortest"
+                     Order="Secondary"
+                     Priority="3"/>
+        <ToolbarItem Text="Longest"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Longest"
+                     Order="Secondary"
+                     Priority="4"/>
+        <ToolbarItem Text="Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="Seen"
+                     Order="Secondary"
+                     Priority="5"/>
+        <ToolbarItem Text="Not Seen"
+                     Command="{Binding SortCommand}"
+                     CommandParameter="NotSeen"
+                     Order="Secondary"
+                     Priority="6"/>
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
             <Button Text="Add new movie"
