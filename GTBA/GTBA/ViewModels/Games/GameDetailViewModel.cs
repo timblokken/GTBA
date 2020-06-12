@@ -17,6 +17,7 @@ namespace GTBA.ViewModels.Games
         {
             Title = game?.GameName;
             Game = game;
+            DeserializeTags();
 
             MessagingCenter.Subscribe<EditGameViewModel, Game>(this, "EditGame", async (obj, update) =>
             {
@@ -29,6 +30,15 @@ namespace GTBA.ViewModels.Games
         public void Delete()
         {
             MessagingCenter.Send(this, "DeleteGame", Game);
+        }
+
+        public void DeserializeTags()
+        {
+            string[] tags = Game.Tags.Split('#');
+            foreach (string tag in tags)
+            {
+                Tags.Add(tag);
+            }
         }
     }
 }

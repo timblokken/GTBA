@@ -14,11 +14,28 @@ namespace GTBA.ViewModels.Games
         {
             Title = game?.GameName;
             Game = game;
+            DeserializeTags();
+            DeleteTagCommand = new Command(tag => ExecuteDeleteTagCommand((string)tag));
         }
 
         public void Save()
         {
+            Game.Tags = SerializeTags();
             MessagingCenter.Send(this, "EditGame", Game);
+        }
+
+        public void AddTag(string tag)
+        {
+            Tags.Add(tag);
+        }
+
+        public void DeserializeTags()
+        {
+            string[] tags = Game.Tags.Split('#');
+            foreach (string tag in tags)
+            {
+                Tags.Add(tag);
+            }
         }
     }
 }
