@@ -14,13 +14,11 @@ namespace GTBA.ViewModels.Franchises
     {
         public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public Franchise Franchise { get; set; }
-        public ObservableCollection<string> Tags { get; set; }
 
         public FranchiseDetailViewModel(Franchise franchise = null)
         {
             Title = franchise?.FranchiseName;
             Franchise = franchise;
-            Tags = new ObservableCollection<string>();
             DeserializeTags();
 
             MessagingCenter.Subscribe<EditFranchiseViewModel, Franchise>(this, "EditFranchise", async (obj, update) =>

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using GTBA.Models;
 using GTBA.Services;
 using GTBA.Services.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace GTBA.ViewModels
 {
@@ -28,8 +29,31 @@ namespace GTBA.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        private ObservableCollection<string> tags = new ObservableCollection<string>();
+        public ObservableCollection<string> Tags
+        {
+            get { return tags; }
+            set { SetProperty(ref tags, value); }
+        }
+
         public Command SortCommand { get; set; }
+
         #endregion
+
+        public string SerializeTags()
+        {
+            String str = "";
+            for (int i = 0; i < Tags.Count; i++)
+            {
+                str += Tags[i];
+                // Do not append comma at the end of last element
+                if (i < Tags.Count - 1)
+                {
+                    str += "#";
+                }
+            }
+            return str;
+        }
 
         #region SetProperty
         protected bool SetProperty<T>(ref T backingStore, T value,

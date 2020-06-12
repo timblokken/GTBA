@@ -10,11 +10,9 @@ namespace GTBA.ViewModels.Franchises
     public class NewFranchiseViewModel : BaseViewModel
     {
         public Franchise Franchise { get; set; }
-        public ObservableCollection<string> Tags { get; set; }
         public NewFranchiseViewModel()
         {
             Franchise = new Franchise();
-            Tags = new ObservableCollection<string>();
         }
 
         public void Save()
@@ -28,20 +26,7 @@ namespace GTBA.ViewModels.Franchises
             Tags.Add(tag);
         }
 
-        public string SerializeTags()
-        {
-            String str = "";
-            for (int i = 0; i < Tags.Count; i++)
-            {
-                str += Tags[i];
-                // Do not append comma at the end of last element
-                if (i < Tags.Count - 1)
-                {
-                    str += "#";
-                }
-            }
-            return str;
-        }
+        
 
     }
 }
