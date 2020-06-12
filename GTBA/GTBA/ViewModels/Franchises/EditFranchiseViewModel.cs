@@ -16,6 +16,7 @@ namespace GTBA.ViewModels.Franchises
             Franchise = franchise;
             Title = franchise?.FranchiseName;
             DeserializeTags();
+            DeleteTagCommand = new Command(tag => ExecuteDeleteTagCommand((string)tag));
         }
 
         public void Save()

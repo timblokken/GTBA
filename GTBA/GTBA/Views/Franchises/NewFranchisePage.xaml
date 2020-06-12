@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:GTBA.ViewModels.Franchises"
              x:Class="GTBA.Views.Franchises.NewFranchisePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
@@ -39,24 +40,26 @@
                         Clicked="addTagBtn_Clicked"/>
                 <ListView x:Name="FranchiseTagsListView"
                       ItemsSource="{Binding Tags}">
-                    
+
                     <!--Custom View Cells-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding .}">
-                               
-                                <!--<TextCell.ContextActions>
-                                    <MenuItem Text="Details" 
-                                          x:Name="detailsMenuItem"
-                                          Clicked="detailsMenuItem_Clicked"/>
-                                    <MenuItem Text="Edit" 
-                                          x:Name="editMenuItem"
-                                          Clicked="editMenuItem_Clicked"/>
-                                    <MenuItem Text="Delete" 
-                                          x:Name="DeleteMenuItem"
-                                          Clicked="DeleteMenuItem_Clicked"/>
-                                </TextCell.ContextActions>-->
-                            </TextCell>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                    <Label Text="{Binding .}"
+                                           TextColor="Black"
+                                           FontSize="Medium"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="95, 0, 0, 0"
+                                           />
+                                    <Button Text="Delete"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:NewFranchiseViewModel}}, Path=DeleteTagCommand}"
+                                            CommandParameter="{Binding .}"
+                                            />
+                                </StackLayout>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

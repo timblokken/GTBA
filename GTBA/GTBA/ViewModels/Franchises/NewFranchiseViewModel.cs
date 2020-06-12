@@ -13,6 +13,7 @@ namespace GTBA.ViewModels.Franchises
         public NewFranchiseViewModel()
         {
             Franchise = new Franchise();
+            DeleteTagCommand = new Command(tag => ExecuteDeleteTagCommand((string)tag));
         }
 
         public void Save()

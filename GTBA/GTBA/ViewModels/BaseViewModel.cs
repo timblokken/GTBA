@@ -37,8 +37,14 @@ namespace GTBA.ViewModels
         }
 
         public Command SortCommand { get; set; }
+        public Command DeleteTagCommand { get; set; }
 
         #endregion
+
+        public void ExecuteDeleteTagCommand(string tag)
+        {
+            Tags.Remove(tag);
+        }
 
         public string SerializeTags()
         {
