@@ -29,6 +29,38 @@
                         Placeholder="Description of Franchise"
                         FontSize="Small"
                         AutoSize="TextChanges" />
+
+                <Label Text="Tags:"
+                       FontSize="Medium" />
+                <Entry x:Name="TagEntry"
+                       Placeholder="Tag"
+                       FontSize="Small" />
+                <Button Text="Add Tag"
+                        x:Name="addTagBtn"
+                        Clicked="addTagBtn_Clicked"/>
+                <ListView x:Name="FranchiseTagsListView"
+                      ItemsSource="{Binding Tags}">
+
+                    <!--Custom View Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding .}">
+
+                                <!--<TextCell.ContextActions>
+                                    <MenuItem Text="Details" 
+                                          x:Name="detailsMenuItem"
+                                          Clicked="detailsMenuItem_Clicked"/>
+                                    <MenuItem Text="Edit" 
+                                          x:Name="editMenuItem"
+                                          Clicked="editMenuItem_Clicked"/>
+                                    <MenuItem Text="Delete" 
+                                          x:Name="DeleteMenuItem"
+                                          Clicked="DeleteMenuItem_Clicked"/>
+                                </TextCell.ContextActions>-->
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

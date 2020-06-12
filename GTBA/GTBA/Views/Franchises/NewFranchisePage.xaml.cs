@@ -32,5 +32,12 @@ namespace GTBA.Views.Franchises
         {
             await Navigation.PopModalAsync();
         }
+
+        private void addTagBtn_Clicked(object sender, EventArgs e)
+        {
+            string tag = TagEntry.Text.Trim();
+            viewModel.AddTag(tag);
+            TagEntry.Text = "";
+        }
     }
 }
