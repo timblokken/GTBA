@@ -22,6 +22,7 @@ namespace GTBA.ViewModels.Movies
             {
                 Movie = update;
                 Title = update.MovieName;
+                DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });
         }
@@ -33,6 +34,7 @@ namespace GTBA.ViewModels.Movies
 
         public void DeserializeTags()
         {
+            Tags.Clear();
             string[] tags = Movie.Tags.Split('#');
             foreach (string tag in tags)
             {

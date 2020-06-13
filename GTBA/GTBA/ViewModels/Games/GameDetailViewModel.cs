@@ -23,6 +23,7 @@ namespace GTBA.ViewModels.Games
             {
                 Game = update;
                 Title = update.GameName;
+                DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });
         }
@@ -34,6 +35,7 @@ namespace GTBA.ViewModels.Games
 
         public void DeserializeTags()
         {
+            Tags.Clear();
             string[] tags = Game.Tags.Split('#');
             foreach (string tag in tags)
             {

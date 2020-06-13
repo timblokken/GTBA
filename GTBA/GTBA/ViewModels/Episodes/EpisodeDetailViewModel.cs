@@ -19,8 +19,8 @@ namespace GTBA.ViewModels.Episodes
 
             MessagingCenter.Subscribe<EditEpisodeViewModel, Episode>(this, "EditEpisode", async (obj, update) =>
             {
-                this.Episode = update;
-                this.Title = update.EpisodeName;
+                Episode = update;
+                Title = update.EpisodeName;
                 DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });

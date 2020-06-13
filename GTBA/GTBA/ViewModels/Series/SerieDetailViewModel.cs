@@ -22,6 +22,7 @@ namespace GTBA.ViewModels.Series
             {
                 Serie = update;
                 Title = update.SerieName;
+                DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });
         }
@@ -33,6 +34,7 @@ namespace GTBA.ViewModels.Series
 
         public void DeserializeTags()
         {
+            Tags.Clear();
             string[] tags = Serie.Tags.Split('#');
             foreach (string tag in tags)
             {

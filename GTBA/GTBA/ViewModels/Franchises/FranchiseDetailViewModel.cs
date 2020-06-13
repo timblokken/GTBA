@@ -25,6 +25,7 @@ namespace GTBA.ViewModels.Franchises
             {
                 Franchise = update;
                 Title = update.FranchiseName;
+                DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });
         }
@@ -36,6 +37,7 @@ namespace GTBA.ViewModels.Franchises
 
         public void DeserializeTags()
         {
+            Tags.Clear();
             string[] tags = Franchise.Tags.Split('#');
             foreach (string tag in tags)
             {
