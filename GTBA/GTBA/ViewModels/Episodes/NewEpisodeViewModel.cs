@@ -24,8 +24,9 @@ namespace GTBA.ViewModels.Episodes
             {
                 selectedSerie = serie;
             }
-            GetSeries();
 
+            GetSeries();
+            DeleteTagCommand = new Command(tag => ExecuteDeleteTagCommand((string)tag));
         }
 
         public Serie SelectedSerie
@@ -37,6 +38,7 @@ namespace GTBA.ViewModels.Episodes
         public void Save()
         {
             Episode.SerieId = selectedSerie.SerieId;
+            Episode.Tags = SerializeTags();
             MessagingCenter.Send(this, "AddEpisode", Episode);
         }
         async void GetSeries()

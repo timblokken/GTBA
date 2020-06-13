@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:GTBA.ViewModels.Episodes"
              x:Class="GTBA.Views.Episodes.NewEpisodePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
@@ -54,6 +55,40 @@
                         ItemsSource="{Binding Series}"
                         ItemDisplayBinding="{Binding SerieName}"
                         SelectedItem="{Binding SelectedSerie}" />
+
+                <Label Text="Tags:"
+                       FontSize="Medium" />
+                <Entry x:Name="TagEntry"
+                       Placeholder="Tag"
+                       FontSize="Small" />
+                <Button Text="Add Tag"
+                        x:Name="addTagBtn"
+                        Clicked="addTagBtn_Clicked" />
+                <ListView x:Name="MovieTagsListView"
+                          ItemsSource="{Binding Tags}">
+
+                    <!--Custom View Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding .}"
+                                           TextColor="Black"
+                                           FontSize="Medium"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="95, 0, 0, 0" />
+                                    <Button Text="Delete"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:NewEpisodeViewModel}}, Path=DeleteTagCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

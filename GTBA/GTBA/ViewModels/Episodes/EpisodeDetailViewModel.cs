@@ -15,17 +15,29 @@ namespace GTBA.ViewModels.Episodes
         {
             Title = episode?.EpisodeName;
             Episode = episode;
+            DeserializeTags();
 
             MessagingCenter.Subscribe<EditEpisodeViewModel, Episode>(this, "EditEpisode", async (obj, update) =>
             {
                 this.Episode = update;
                 this.Title = update.EpisodeName;
+                DeserializeTags();
                 await DataStore.UpdateItemAsync(update);
             });
         }
         public void Delete()
         {
             MessagingCenter.Send(this, "DeleteEpisode", Episode);
+        }
+
+        public void DeserializeTags()
+        {
+            Tags.Clear();
+            string[] tags = Episode.Tags.Split('#');
+            foreach (string tag in tags)
+            {
+                Tags.Add(tag);
+            }
         }
     }
 }
