@@ -19,6 +19,7 @@ namespace GTBA.ViewModels
         public IFranchisesDataStore DataStore => DependencyService.Get<IFranchisesDataStore>();
         public ObservableCollection<Franchise> Franchises { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Command PerformSearch { get; set; }
 
         public FranchisesViewModel()
         {
@@ -26,6 +27,7 @@ namespace GTBA.ViewModels
             Franchises = new ObservableCollection<Franchise>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             SortCommand = new Command(async (parameter) => await ExecuteLoadItemsCommand((string)parameter));
+            PerformSearch = new Command(async (search) => await ExecutePerformSearchCommand((string)search));
 
             MessagingCenter.Subscribe<NewFranchiseViewModel, Franchise>(this, "AddFranchise", async (obj, franchise) =>
             {
@@ -56,6 +58,31 @@ namespace GTBA.ViewModels
             {
                 Franchises.Clear();
                 var franchises = await DataStore.GetItemsAsync(true,sorter);
+                foreach (var franchise in franchises)
+                {
+                    Franchises.Add(franchise);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public async Task ExecutePerformSearchCommand(string search, string sorter = null)
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Franchises.Clear();
+                var franchises = await DataStore.GetItemsByTagsAsync(search, sorter);
                 foreach (var franchise in franchises)
                 {
                     Franchises.Add(franchise);
