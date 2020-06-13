@@ -28,6 +28,7 @@ namespace GTBA.ViewModels.Games
             }
 
             GetFranchises();
+            DeleteTagCommand = new Command(tag => ExecuteDeleteTagCommand((string)tag));
         }
 
         public Franchise SelectedFranchise
@@ -39,6 +40,7 @@ namespace GTBA.ViewModels.Games
         public void Save()
         {
             Game.FranchiseId = selectedFranchise.FranchiseId;
+            Game.Tags = SerializeTags();
             MessagingCenter.Send(this, "AddGame", Game);
         }
         async void GetFranchises()

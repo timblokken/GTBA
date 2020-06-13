@@ -50,6 +50,20 @@
                        FontSize="Medium" />
                 <Label Text="{Binding Movie.Franchise.FranchiseName}"
                        FontSize="Small" />
+
+                <Label Text="Tags:"
+                       FontSize="Medium" />
+                <ListView x:Name="MovieTagsListView"
+                          ItemsSource="{Binding Tags}"
+                          IsEnabled="False">
+
+                    <!--Custom View Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding .}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

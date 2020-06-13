@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:GTBA.ViewModels.Franchises"
              x:Class="GTBA.Views.Franchises.NewFranchisePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel"
@@ -28,6 +29,40 @@
                         Placeholder="Description of Franchise"
                         FontSize="Small"
                         AutoSize="TextChanges" />
+
+                <Label Text="Tags:"
+                       FontSize="Medium" />
+                <Entry x:Name="TagEntry"
+                       Placeholder="Tag"
+                       FontSize="Small" />
+                <Button Text="Add Tag"
+                        x:Name="addTagBtn"
+                        Clicked="addTagBtn_Clicked"/>
+                <ListView x:Name="FranchiseTagsListView"
+                      ItemsSource="{Binding Tags}">
+
+                    <!--Custom View Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                    <Label Text="{Binding .}"
+                                           TextColor="Black"
+                                           FontSize="Medium"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="95, 0, 0, 0"
+                                           />
+                                    <Button Text="Delete"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:NewFranchiseViewModel}}, Path=DeleteTagCommand}"
+                                            CommandParameter="{Binding .}"
+                                            />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

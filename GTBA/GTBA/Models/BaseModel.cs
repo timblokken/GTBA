@@ -8,6 +8,13 @@ namespace GTBA.Models
 {
     public class BaseModel : INotifyPropertyChanged
     {
+        string tags = string.Empty;
+        public string Tags
+        {
+            get { return tags; }
+            set { SetProperty(ref tags, value); }
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)

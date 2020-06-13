@@ -31,5 +31,12 @@ namespace GTBA.Views.Games
         {
             await Navigation.PopModalAsync();
         }
+
+        private void addTagBtn_Clicked(object sender, EventArgs e)
+        {
+            string tag = TagEntry.Text.Trim();
+            viewModel.AddTag(tag);
+            TagEntry.Text = "";
+        }
     }
 }

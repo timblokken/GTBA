@@ -35,6 +35,20 @@
                         FontSize="Small"
                         AutoSize="TextChanges"
                         IsReadOnly="True" />
+
+                <Label Text="Tags:"
+                       FontSize="Medium"/>
+                <ListView x:Name="FranchiseTagsListView"
+                      ItemsSource="{Binding Tags}"
+                          IsEnabled="False">
+
+                    <!--Custom View Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding .}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
