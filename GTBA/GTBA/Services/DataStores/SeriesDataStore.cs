@@ -87,5 +87,10 @@ namespace GTBA.Services.DataStores
                     return await series.ToListAsync();
             }
         }
+
+        public Task<IEnumerable<Serie>> GetItemsByTagsAsync(string tag, string sorter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

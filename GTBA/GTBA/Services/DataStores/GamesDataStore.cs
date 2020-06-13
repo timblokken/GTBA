@@ -47,5 +47,10 @@ namespace GTBA.Services.DataStores
                     return await games.ToListAsync();
             }
         }
+
+        public Task<IEnumerable<Game>> GetItemsByTagsAsync(string tag, string sorter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
