@@ -25,11 +25,6 @@ namespace GTBA.ViewModels.Franchises
             MessagingCenter.Send(this, "EditFranchise", Franchise);
         }
 
-        public void AddTag(string tag)
-        {
-            Tags.Add(tag);
-        }
-
         public void DeserializeTags()
         {
             string[] tags = Franchise.Tags.Split('#');

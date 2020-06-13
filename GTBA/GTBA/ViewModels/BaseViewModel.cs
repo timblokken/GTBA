@@ -60,6 +60,10 @@ namespace GTBA.ViewModels
             }
             return str;
         }
+        public void AddTag(string tag)
+        {
+            Tags.Add(tag);
+        }
 
         #region SetProperty
         protected bool SetProperty<T>(ref T backingStore, T value,

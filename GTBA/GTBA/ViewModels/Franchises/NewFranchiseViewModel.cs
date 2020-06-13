@@ -21,13 +21,5 @@ namespace GTBA.ViewModels.Franchises
             Franchise.Tags = SerializeTags();
             MessagingCenter.Send(this, "AddFranchise", Franchise);
         }
-
-        public void AddTag(string tag)
-        {
-            Tags.Add(tag);
-        }
-
-        
-
     }
 }

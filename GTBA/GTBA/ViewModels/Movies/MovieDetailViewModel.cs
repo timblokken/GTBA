@@ -16,6 +16,7 @@ namespace GTBA.ViewModels.Movies
         {
             Title = movie?.MovieName;
             Movie = movie;
+            DeserializeTags();
 
             MessagingCenter.Subscribe<EditMovieViewModel, Movie>(this, "EditMovie", async (obj, update) =>
             {
@@ -28,6 +29,15 @@ namespace GTBA.ViewModels.Movies
         public void Delete()
         {
             MessagingCenter.Send(this, "DeleteMovie", Movie);
+        }
+
+        public void DeserializeTags()
+        {
+            string[] tags = Movie.Tags.Split('#');
+            foreach (string tag in tags)
+            {
+                Tags.Add(tag);
+            }
         }
     }
 }

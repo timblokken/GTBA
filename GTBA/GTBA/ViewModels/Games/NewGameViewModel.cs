@@ -52,10 +52,5 @@ namespace GTBA.ViewModels.Games
                 Franchises.Add(franchise);
             }
         }
-
-        public void AddTag(string tag)
-        {
-            Tags.Add(tag);
-        }
     }
 }

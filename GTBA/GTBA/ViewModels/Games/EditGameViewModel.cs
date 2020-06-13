@@ -24,11 +24,6 @@ namespace GTBA.ViewModels.Games
             MessagingCenter.Send(this, "EditGame", Game);
         }
 
-        public void AddTag(string tag)
-        {
-            Tags.Add(tag);
-        }
-
         public void DeserializeTags()
         {
             string[] tags = Game.Tags.Split('#');
