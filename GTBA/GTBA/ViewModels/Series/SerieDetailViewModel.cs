@@ -16,6 +16,7 @@ namespace GTBA.ViewModels.Series
         {
             Title = serie?.SerieName;
             Serie = serie;
+            DeserializeTags();
 
             MessagingCenter.Subscribe<EditSerieViewModel, Serie>(this, "EditSerie", async (obj, update) =>
             {
@@ -28,6 +29,15 @@ namespace GTBA.ViewModels.Series
         public void Delete()
         {
             MessagingCenter.Send(this, "DeleteSerie", Serie);
+        }
+
+        public void DeserializeTags()
+        {
+            string[] tags = Serie.Tags.Split('#');
+            foreach (string tag in tags)
+            {
+                Tags.Add(tag);
+            }
         }
     }
 }
