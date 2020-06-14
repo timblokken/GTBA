@@ -68,9 +68,16 @@ namespace GTBA.Services.DataStores
             }
         }
 
-        public Task<IEnumerable<Movie>> GetItemsByTagsAsync(string tag, string sorter = null)
+        public async Task<IEnumerable<Movie>> GetItemsByTagsAsync(string tag, string sorter = null)
         {
-            throw new NotImplementedException();
+            var movies = table.Where(m => m.Tags.Contains(tag)).Include(m => m.Franchise);
+            return await Sort(sorter, movies);
+        }
+
+        public async Task<IEnumerable<Movie>> GetItemsByTagByFranchiseAsync(string tag, int franId, string sorter = null)
+        {
+            var movies = table.Where(m => m.FranchiseId == franId).Where(m => m.Tags.Contains(tag)).Include(m => m.Franchise);
+            return await Sort(sorter, movies);
         }
     }
 }

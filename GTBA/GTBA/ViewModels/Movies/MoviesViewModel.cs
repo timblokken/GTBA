@@ -86,5 +86,39 @@ namespace GTBA.ViewModels
                 IsBusy = false;
             }
         }
+
+        public async Task ExecutePerformSearchCommand(string search, Franchise franchise = null, string sorter = null)
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Movies.Clear();
+                IEnumerable<Movie> movies;
+                if (franchise != null)
+                {
+                    movies = await DataStore.GetItemsByTagByFranchiseAsync(search, franchise.FranchiseId, sorter);
+                }
+                else
+                {
+                    movies = await DataStore.GetItemsByTagsAsync(search, sorter);
+                }
+                foreach (var movie in movies)
+                {
+                    Movies.Add(movie);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
     }
 }

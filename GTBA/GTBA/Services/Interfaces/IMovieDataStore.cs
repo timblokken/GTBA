@@ -11,5 +11,6 @@ namespace GTBA.Services.Interfaces
     {
         Task<IEnumerable<Movie>> GetItemsByFranchiseAsync(int franId, string sorter = null);
         Task<IEnumerable<Movie>> Sort(string sorter, IIncludableQueryable<Movie, Franchise> movies);
+        Task<IEnumerable<Movie>> GetItemsByTagByFranchiseAsync(string tag, int franId, string sorter = null);
     }
 }
