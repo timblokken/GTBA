@@ -22,7 +22,7 @@ namespace GTBA.ViewModels
 
         public MoviesViewModel(Franchise franchise = null)
         {
-            Title = franchise != null ? "Movies" : "GTBA";
+            Title = "Movies";
             this.franchise = franchise;
             Movies = new ObservableCollection<Movie>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));

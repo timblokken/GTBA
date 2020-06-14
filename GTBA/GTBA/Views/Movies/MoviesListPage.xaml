@@ -15,32 +15,32 @@
                      Command="{Binding SortCommand}"
                      CommandParameter="AZ"
                      Order="Secondary"
-                     Priority="1"/>
+                     Priority="1" />
         <ToolbarItem Text="Z-A"
                      Command="{Binding SortCommand}"
                      CommandParameter="ZA"
                      Order="Secondary"
-                     Priority="2"/>
+                     Priority="2" />
         <ToolbarItem Text="Shortest"
                      Command="{Binding SortCommand}"
                      CommandParameter="Shortest"
                      Order="Secondary"
-                     Priority="3"/>
+                     Priority="3" />
         <ToolbarItem Text="Longest"
                      Command="{Binding SortCommand}"
                      CommandParameter="Longest"
                      Order="Secondary"
-                     Priority="4"/>
+                     Priority="4" />
         <ToolbarItem Text="Seen"
                      Command="{Binding SortCommand}"
                      CommandParameter="Seen"
                      Order="Secondary"
-                     Priority="5"/>
+                     Priority="5" />
         <ToolbarItem Text="Not Seen"
                      Command="{Binding SortCommand}"
                      CommandParameter="NotSeen"
                      Order="Secondary"
-                     Priority="6"/>
+                     Priority="6" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
@@ -53,6 +53,7 @@
                     x:Name="AddMovieBtn"
                     Clicked="AddMovieBtn_Clicked" />
             <ListView x:Name="MoviesListView"
+                      HasUnevenRows="True"
                       ItemsSource="{Binding Movies}"
                       ItemTapped="Handle_ItemTapped"
                       RefreshCommand="{Binding LoadItemsCommand}"
@@ -64,31 +65,53 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding MovieLength,StringFormat='{0} Minutes'}"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="Small"/>
                                 <Label Text="{Binding MovieName}"
+                                       Grid.Column="2"
+                                       Grid.ColumnSpan="2"
                                        Style="{DynamicResource ListItemTextStyle}"
-                                       HorizontalOptions="CenterAndExpand" 
-                                       VerticalOptions="Center"
-                                       Margin="46,0,0,0"/>
-                                <Image Source="checkmark.png" 
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="Black"
+                                       FontSize="Large"
+                                       Margin="10,0,0,0" />
+                                <Image Source="checkmark.png"
+                                       Grid.Column="4"
                                        HorizontalOptions="End"
-                                       VerticalOptions="Start"
+                                       VerticalOptions="Center"
                                        Margin="0,0,10,0"
                                        Opacity="{Binding Seen}" />
-                            </StackLayout>
+                            </Grid>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Mark as seen" 
+                                <MenuItem Text="Mark as seen"
                                           x:Name="seenMenuItem"
-                                          Clicked="seenMenuItem_Clicked"/>
-                                <MenuItem Text="Details" 
+                                          Clicked="seenMenuItem_Clicked" />
+                                <MenuItem Text="Details"
                                           x:Name="detailsMenuItem"
-                                          Clicked="detailsMenuItem_Clicked"/>
-                                <MenuItem Text="Edit" 
+                                          Clicked="detailsMenuItem_Clicked" />
+                                <MenuItem Text="Edit"
                                           x:Name="editMenuItem"
-                                          Clicked="editMenuItem_Clicked"/>
-                                <MenuItem Text="Delete" 
+                                          Clicked="editMenuItem_Clicked" />
+                                <MenuItem Text="Delete"
                                           x:Name="DeleteMenuItem"
-                                          Clicked="DeleteMenuItem_Clicked"/>
+                                          Clicked="DeleteMenuItem_Clicked" />
                             </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
