@@ -19,7 +19,7 @@ namespace GTBA.ViewModels
         public Franchise franchise;
         public GamesViewModel(Franchise franchise = null)
         {
-            Title = franchise != null ? "Games" : "GTBA";
+            Title = "Games";
             this.franchise = franchise;
             Games = new ObservableCollection<Game>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand(franchise));
@@ -65,6 +65,40 @@ namespace GTBA.ViewModels
                     games = await DataStore.GetItemsAsync(true, sorter);
                 }
 
+                foreach (var game in games)
+                {
+                    Games.Add(game);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public async Task ExecutePerformSearchCommand(string search, Franchise franchise = null, string sorter = null)
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Games.Clear();
+                IEnumerable<Game> games;
+                if (franchise != null)
+                {
+                    games = await DataStore.GetItemsByTagByFranchiseAsync(search, franchise.FranchiseId, sorter);
+                }
+                else
+                {
+                    games = await DataStore.GetItemsByTagsAsync(search, sorter);
+                }
                 foreach (var game in games)
                 {
                     Games.Add(game);

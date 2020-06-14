@@ -76,5 +76,16 @@ namespace GTBA.Views
             var contextItem = (Game)menuItem.BindingContext;
             await viewModel.DeleteGame(contextItem);
         }
+
+        private void SearchToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            tagSearchBar.Text = "";
+            tagSearchBar.IsVisible = !tagSearchBar.IsVisible;
+        }
+
+        private async void tagSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            await viewModel.ExecutePerformSearchCommand(e.NewTextValue,viewModel.franchise);
+        }
     }
 }
