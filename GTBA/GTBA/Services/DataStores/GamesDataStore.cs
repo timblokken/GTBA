@@ -19,7 +19,7 @@ namespace GTBA.Services.DataStores
 
         public async Task<IEnumerable<Game>> GetItemsByFranchiseAsync(int franId, string sorter = null)
         {
-            var games = table.Where(f => f.FranchiseId == franId).Include(g => g.Franchise);
+            var games = table.Where(g => g.FranchiseId == franId).Include(g => g.Franchise);
             return await Sort(sorter, games);
         }
 
@@ -46,6 +46,18 @@ namespace GTBA.Services.DataStores
                 default:
                     return await games.ToListAsync();
             }
+        }
+
+        public async Task<IEnumerable<Game>> GetItemsByTagsAsync(string tag, string sorter = null)
+        {
+            var games = table.Where(g => g.Tags.Contains(tag)).Include(g => g.Franchise);
+            return await Sort(sorter, games);
+        }
+
+        public async Task<IEnumerable<Game>> GetItemsByTagByFranchiseAsync(string tag, int franId, string sorter = null)
+        {
+            var games = table.Where(g => g.FranchiseId == franId).Where(g => g.Tags.Contains(tag)).Include(g => g.Franchise);
+            return await Sort(sorter, games);
         }
     }
 }

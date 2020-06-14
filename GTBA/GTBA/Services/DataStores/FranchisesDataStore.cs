@@ -19,21 +19,34 @@ namespace GTBA.Services.DataStores
 
         public override async Task<IEnumerable<Franchise>> GetItemsAsync(bool forceRefresh = false, string sorter = null)
         {
+            var franchises = table;
+            return await Sort(sorter, franchises);
+        }
+
+        public async Task<IEnumerable<Franchise>> GetItemsByTagsAsync(string tag, string sorter = null)
+        {
+            var franchises = table.Where(f => f.Tags.Contains(tag));
+            return await Sort(sorter, franchises);
+        }
+
+        public async Task<IEnumerable<Franchise>> Sort(string sorter, IQueryable<Franchise> franchises)
+        {
             switch (sorter)
             {
                 case "AZ":
-                    var az = from franchise in table
+                    var az = from franchise in franchises
                              orderby franchise.FranchiseName ascending
                              select franchise;
                     return await az.ToListAsync();
                 case "ZA":
-                    var za = from franchise in table
+                    var za = from franchise in franchises
                              orderby franchise.FranchiseName descending
                              select franchise;
                     return await za.ToListAsync();
                 default:
-                    return await table.ToListAsync();
+                    return await franchises.ToListAsync();
             }
         }
     }
 }
+

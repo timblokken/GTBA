@@ -11,5 +11,7 @@ namespace GTBA.Services.Interfaces
         Task<bool> DeleteItemAsync(int id);
         Task<T> GetItemAsync(int id);
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false, string sorter = null);
+        Task<IEnumerable<T>> GetItemsByTagsAsync(string tag, string sorter = null);
+
     }
 }

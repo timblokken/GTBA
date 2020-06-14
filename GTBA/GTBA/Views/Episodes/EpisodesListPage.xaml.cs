@@ -81,5 +81,16 @@ namespace GTBA.Views.Episodes
             contextItem.Seen = !contextItem.Seen;
             await viewModel.UpdateEpisode(contextItem);
         }
+
+        private void SearchToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            tagSearchBar.Text = "";
+            tagSearchBar.IsVisible = !tagSearchBar.IsVisible;
+        }
+
+        private async void tagSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            await viewModel.ExecutePerformSearchCommand(e.NewTextValue, viewModel.serie);
+        }
     }
 }

@@ -26,7 +26,6 @@ namespace GTBA.ViewModels.Episodes
 
             MessagingCenter.Subscribe<NewEpisodeViewModel, Episode>(this, "AddEpisode", async (obj, episode) =>
             {
-                Episodes.Add(episode);
                 await DataStore.AddItemAsync(episode);
                 await ExecuteLoadItemsCommand(serie);
             });
@@ -39,7 +38,6 @@ namespace GTBA.ViewModels.Episodes
 
         public async Task DeleteEpisode(Episode episode)
         {
-            Episodes.Remove(episode);
             await DataStore.DeleteItemAsync(episode.EpisodeId);
             await ExecuteLoadItemsCommand(serie);
         }
@@ -69,6 +67,40 @@ namespace GTBA.ViewModels.Episodes
                     episodes = await DataStore.GetItemsAsync(true, sorter);
                 }
 
+                foreach (var episode in episodes)
+                {
+                    Episodes.Add(episode);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public async Task ExecutePerformSearchCommand(string search, Serie serie = null, string sorter = null)
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Episodes.Clear();
+                IEnumerable<Episode> episodes;
+                if (serie != null)
+                {
+                    episodes = await DataStore.GetItemsByTagBySerieAsync(search, serie.SerieId, sorter);
+                }
+                else
+                {
+                    episodes = await DataStore.GetItemsByTagsAsync(search, sorter);
+                }
                 foreach (var episode in episodes)
                 {
                     Episodes.Add(episode);

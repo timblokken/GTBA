@@ -29,6 +29,17 @@ namespace GTBA.Services.DataStores
             return await Sort(sorter, episodes);
         }
 
+        public async Task<IEnumerable<Episode>> GetItemsByTagsAsync(string tag, string sorter = null)
+        {
+            var episodes = table.Where(e => e.Tags.Contains(tag)).Include(e => e.Serie);
+            return await Sort(sorter, episodes);
+        }
+
+        public async Task<IEnumerable<Episode>> GetItemsByTagBySerieAsync(string tag, int franId, string sorter = null)
+        {
+            var episodes = table.Where(g => g.SerieId == franId).Where(g => g.Tags.Contains(tag)).Include(g => g.Serie);
+            return await Sort(sorter, episodes);
+        }
         public async Task<IEnumerable<Episode>> Sort(string sorter, IIncludableQueryable<Episode, Serie> episodes)
         {
             switch (sorter)

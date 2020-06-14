@@ -12,15 +12,24 @@
                      Command="{Binding SortCommand}"
                      CommandParameter="AZ"
                      Order="Secondary"
-                     Priority="1"/>
+                     Priority="1" />
         <ToolbarItem Text="Z-A"
                      Command="{Binding SortCommand}"
                      CommandParameter="ZA"
                      Order="Secondary"
-                     Priority="2"/>
+                     Priority="2" />
+        <ToolbarItem Text="Search"
+                     x:Name="SearchToolbarItem"
+                     Clicked="SearchToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
+
     <ScrollView>
         <StackLayout>
+            <SearchBar IsVisible="False"
+                       x:Name="tagSearchBar"
+                       TextChanged="tagSearchBar_TextChanged" />
+            <!--SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference tagSearchBar}}"/>-->
             <Button Text="Add new franchise"
                     x:Name="AddFranchiseBtn"
                     Clicked="AddFranchiseBtn_Clicked" />
@@ -43,15 +52,15 @@
                                        Style="{DynamicResource ListItemTextStyle}" />
                             </StackLayout>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Details" 
+                                <MenuItem Text="Details"
                                           x:Name="detailsMenuItem"
-                                          Clicked="detailsMenuItem_Clicked"/>
-                                <MenuItem Text="Edit" 
+                                          Clicked="detailsMenuItem_Clicked" />
+                                <MenuItem Text="Edit"
                                           x:Name="editMenuItem"
-                                          Clicked="editMenuItem_Clicked"/>
-                                <MenuItem Text="Delete" 
+                                          Clicked="editMenuItem_Clicked" />
+                                <MenuItem Text="Delete"
                                           x:Name="DeleteMenuItem"
-                                          Clicked="DeleteMenuItem_Clicked"/>
+                                          Clicked="DeleteMenuItem_Clicked" />
                             </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
