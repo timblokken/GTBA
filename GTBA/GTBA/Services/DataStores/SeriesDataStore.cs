@@ -17,15 +17,25 @@ namespace GTBA.Services.DataStores
             table = context.Series;
         }
 
+        public override async Task<IEnumerable<Serie>> GetItemsAsync(bool forceRefresh = false, string sorter = null)
+        {
+            var series = table.Include(s => s.Franchise);
+            return await Sort(sorter, series);
+        }
         public async Task<IEnumerable<Serie>> GetItemsByFranchiseAsync(int franId, string sorter = null)
         {
             var series = table.Where(f => f.FranchiseId == franId).Include(s => s.Franchise);
             return await Sort(sorter, series);
         }
-
-        public override async Task<IEnumerable<Serie>> GetItemsAsync(bool forceRefresh = false, string sorter = null)
+        public async Task<IEnumerable<Serie>> GetItemsByTagsAsync(string tag, string sorter = null)
         {
-            var series = table.Include(s => s.Franchise);
+            var series = table.Where(s => s.Tags.Contains(tag)).Include(s => s.Franchise);
+            return await Sort(sorter, series);
+        }
+
+        public async Task<IEnumerable<Serie>> GetItemsByTagByFranchiseAsync(string tag, int franId, string sorter = null)
+        {
+            var series = table.Where(s => s.FranchiseId == franId).Where(s => s.Tags.Contains(tag)).Include(s => s.Franchise);
             return await Sort(sorter, series);
         }
 
@@ -86,11 +96,6 @@ namespace GTBA.Services.DataStores
                 default:
                     return await series.ToListAsync();
             }
-        }
-
-        public Task<IEnumerable<Serie>> GetItemsByTagsAsync(string tag, string sorter = null)
-        {
-            throw new NotImplementedException();
         }
     }
 }

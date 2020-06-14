@@ -27,7 +27,6 @@ namespace GTBA.ViewModels
 
             MessagingCenter.Subscribe<NewGameViewModel, Game>(this, "AddGame", async (obj, game) =>
             {
-                Games.Add(game);
                 await DataStore.AddItemAsync(game);
                 await ExecuteLoadItemsCommand(franchise);
             });
@@ -40,7 +39,6 @@ namespace GTBA.ViewModels
 
         public async Task DeleteGame(Game game)
         {
-            Games.Remove(game);
             await DataStore.DeleteItemAsync(game.GameId);
             await ExecuteLoadItemsCommand(franchise);
         }

@@ -8,6 +8,9 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search"
+                     x:Name="SearchToolbarItem"
+                     Clicked="SearchToolbarItem_Clicked" />
         <ToolbarItem Text="A-Z"
                      Command="{Binding SortCommand}"
                      CommandParameter="AZ"
@@ -62,6 +65,10 @@
 
     <ScrollView>
         <StackLayout>
+            <SearchBar IsVisible="False"
+                       x:Name="tagSearchBar"
+                       TextChanged="tagSearchBar_TextChanged"
+                       Placeholder="Tags" />
             <Button Text="Add new Serie"
                     x:Name="AddSerieBtn"
                     Clicked="AddSerieBtn_Clicked" />
