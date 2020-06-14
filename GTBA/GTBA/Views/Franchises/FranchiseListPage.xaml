@@ -28,8 +28,6 @@
             <SearchBar IsVisible="False"
                        x:Name="tagSearchBar"
                        TextChanged="tagSearchBar_TextChanged" />
-            <!--SearchCommand="{Binding PerformSearch}"
-                       SearchCommandParameter="{Binding Text, Source={x:Reference tagSearchBar}}"/>-->
             <Button Text="Add new franchise"
                     x:Name="AddFranchiseBtn"
                     Clicked="AddFranchiseBtn_Clicked" />
@@ -49,7 +47,9 @@
                                          VerticalOptions="Center"
                                          HorizontalOptions="CenterAndExpand">
                                 <Label Text="{Binding FranchiseName}"
-                                       Style="{DynamicResource ListItemTextStyle}" />
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       FontSize="Title"
+                                       TextColor="Black"/>
                             </StackLayout>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Details"

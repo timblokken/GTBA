@@ -49,7 +49,9 @@
                                          HorizontalOptions="CenterAndExpand">
                                 <Label Text="{Binding GameName}"
                                        Style="{DynamicResource ListItemTextStyle}"
-                                       HorizontalOptions="CenterAndExpand" />
+                                       HorizontalOptions="CenterAndExpand" 
+                                       FontSize="Title"
+                                       TextColor="Black"/>
                             </StackLayout>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Details" 
