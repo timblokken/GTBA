@@ -53,6 +53,7 @@
                     x:Name="AddEpiBtn"
                     Clicked="AddEpiBtn_Clicked" />
             <ListView x:Name="GamesListView"
+                      HasUnevenRows="True"
                       ItemsSource="{Binding Episodes}"
                       ItemTapped="Handle_ItemTapped"
                       RefreshCommand="{Binding LoadItemsCommand}"
@@ -64,30 +65,45 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Season, StringFormat='S{0}'}"
+                                       Grid.Column="0"
                                        HorizontalOptions="Start"
-                                       VerticalOptions="Center" 
+                                       VerticalOptions="Center"
                                        FontSize="Large"
-                                       Padding="20,0,0,0"
-                                       />
+                                       Padding="20,0,0,0" />
                                 <Label Text="{Binding EpisodeNr, StringFormat='E{0}'}"
-                                       HorizontalOptions="Start" 
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
                                        VerticalOptions="Center"
                                        FontSize="Large" />
                                 <Label Text="{Binding EpisodeName}"
+                                       Grid.Column="2"
+                                       Grid.ColumnSpan="2"
+                                       Padding="10,0,0,0"
                                        Style="{DynamicResource ListItemTextStyle}"
-                                       HorizontalOptions="CenterAndExpand" 
-                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
                                        FontSize="Large"
                                        TextColor="Black"
-                                       Margin="0,0,30,0"/>
-                                <Image Source="checkmark.png" 
+                                       Margin="0,0,30,0" />
+                                <Image Source="checkmark.png"
+                                       Grid.Column="4"
                                        HorizontalOptions="End"
-                                       VerticalOptions="Start"
+                                       VerticalOptions="Center"
                                        Margin="0,0,10,0"
                                        Opacity="{Binding Seen}" />
-                            </StackLayout>
+                            </Grid>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Mark as seen" 
                                           x:Name="seenMenuItem"
