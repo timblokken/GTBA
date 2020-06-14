@@ -74,6 +74,7 @@
                     Clicked="AddSerieBtn_Clicked" />
             <ListView x:Name="SeriesListView"
                       ItemsSource="{Binding Series}"
+                      HasUnevenRows="True"
                       ItemTapped="Handle_ItemTapped"
                       RefreshCommand="{Binding LoadItemsCommand}"
                       IsPullToRefreshEnabled="True"
@@ -84,18 +85,49 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding SerieName}"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       HorizontalOptions="CenterAndExpand"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.25*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Seasons, StringFormat='S{0}'}"
+                                       Grid.Column="0"
+                                       HorizontalOptions="Start"
                                        VerticalOptions="Center"
-                                       Margin="46,0,0,0"/>
-                                <Image Source="checkmark.png" 
+                                       FontSize="Large"
+                                       Padding="20,0,0,0" />
+
+                                <Label Text="{Binding NrOfEpisodes, StringFormat='E{0}'}"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       FontSize="Large" />
+
+                                <Label Text="{Binding SerieName}"
+                                       Grid.Column="2"
+                                       Grid.ColumnSpan="2"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="Large"
+                                       TextColor="Black"
+                                       Margin="15,0,0,0" />
+
+                                <Image Source="checkmark.png"
+                                       Grid.Column="4"
                                        HorizontalOptions="End"
-                                       VerticalOptions="Start"
+                                       VerticalOptions="Center"
                                        Margin="0,0,10,0"
                                        Opacity="{Binding Seen}" />
-                            </StackLayout>
+                            </Grid>
+                            
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Mark as seen" 
                                           x:Name="seenMenuItem"
