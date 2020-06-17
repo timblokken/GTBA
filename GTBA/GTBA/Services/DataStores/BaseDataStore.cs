@@ -24,7 +24,15 @@ namespace GTBA.Services.DataStores
 
         public async Task<bool> UpdateItemAsync(T item)
         {
-            return await SaveChangesAsync();
+            try
+            {
+                return await SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
         }
 
         public async Task<bool> AddItemAsync(T item)
