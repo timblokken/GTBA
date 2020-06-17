@@ -44,9 +44,13 @@ namespace GTBA.Views.Movies
 
         private void addTagBtn_Clicked(object sender, EventArgs e)
         {
-            string tag = TagEntry.Text.Trim();
-            viewModel.AddTag(tag);
-            TagEntry.Text = "";
+            if (!string.IsNullOrWhiteSpace(TagEntry.Text))
+            {
+                string tag = TagEntry.Text.Trim();
+                viewModel.AddTag(tag);
+                TagEntry.Text = "";
+            }
+            
         }
     }
 }
