@@ -90,7 +90,7 @@
                                        HorizontalTextAlignment="Start"
                                        VerticalTextAlignment="Center"
                                        TextColor="Black"
-                                       FontSize="Large"
+                                       FontSize="Body"
                                        Margin="10,0,0,0" />
                                 <Image Source="checkmark.png"
                                        Grid.Column="4"
