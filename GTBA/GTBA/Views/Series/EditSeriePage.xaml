@@ -61,7 +61,8 @@
                        FontSize="Medium" />
                 <Entry x:Name="TagEntry"
                        Placeholder="Tag"
-                       FontSize="Small" />
+                       FontSize="Small"
+                       Completed="TagEntry_Completed" />
                 <Button Text="Add Tag"
                         x:Name="addTagBtn"
                         Clicked="addTagBtn_Clicked" />

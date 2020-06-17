@@ -41,5 +41,15 @@ namespace GTBA.Views.Games
                 TagEntry.Text = "";
             }
         }
+
+        private void TagEntry_Completed(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TagEntry.Text))
+            {
+                string tag = TagEntry.Text.Trim();
+                viewModel.AddTag(tag);
+                TagEntry.Text = "";
+            }
+        }
     }
 }
